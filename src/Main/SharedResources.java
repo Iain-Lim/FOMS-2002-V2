@@ -2,11 +2,41 @@ package Main;
 
 import Backend.Staff;
 import Backend.User;
+import Database.BranchDBHelper;
 import Database.DataStructs.User_T;
+import Database.MenuDBHelper;
+import Database.OrderDBHelper;
 import Database.UserDBHelper;
 
 public class SharedResources {
     public static UserDBHelper userDatabaseHelper;
+    public static OrderDBHelper orderDBHelper;
+    public static BranchDBHelper branchDBHelper;
+    public static MenuDBHelper menuDBHelper;
+
+    public static MenuDBHelper getMenuDBHelper() {
+        return menuDBHelper;
+    }
+
+    public static void setMenuDBHelper(MenuDBHelper menuDBHelper) {
+        SharedResources.menuDBHelper = menuDBHelper;
+    }
+
+    public static OrderDBHelper getOrderDBHelper() {
+        return orderDBHelper;
+    }
+
+    public static void setOrderDBHelper(OrderDBHelper orderDBHelper) {
+        SharedResources.orderDBHelper = orderDBHelper;
+    }
+
+    public static BranchDBHelper getBranchDBHelper() {
+        return branchDBHelper;
+    }
+
+    public static void setBranchDBHelper(BranchDBHelper branchDBHelper) {
+        SharedResources.branchDBHelper = branchDBHelper;
+    }
 
     public static Staff getCurrStaff() {
         return currStaff;

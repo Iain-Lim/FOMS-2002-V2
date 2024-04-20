@@ -30,6 +30,14 @@ public class User_T implements java.io.Serializable {
         this.staffType = staffType;
     }
 
+    public User_T(String username, String password, boolean isStaff, StaffType staffType) {
+        this.userId = UUID.randomUUID();
+        this.username = username;
+        this.password = password;
+        this.isStaff = isStaff;
+        this.staffType = staffType;
+    }
+
     @Override
     public String toString() {
         return "User_T{" +

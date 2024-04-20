@@ -7,6 +7,8 @@
 
 package Database.DataStructs;
 
+import java.util.UUID;
+
 public class MenuItem_T implements java.io.Serializable {
 
     /**
@@ -29,13 +31,57 @@ public class MenuItem_T implements java.io.Serializable {
         NOT_AVAILABLE
     }
 
+    private UUID menuItemUUID;
     ;
     private float price;
     private AVAILABILITY availability;
     private String description;
+    private String name;
     private CATEGORIES category;
 
     public MenuItem_T() {}
+
+    public MenuItem_T(float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
+        this.menuItemUUID = UUID.randomUUID();
+        this.price = price;
+        this.availability = availability;
+        this.description = description;
+        this.name = name;
+        this.category = category;
+    }
+
+    public MenuItem_T(UUID menuItemUUID, float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
+        this.menuItemUUID = menuItemUUID;
+        this.price = price;
+        this.availability = availability;
+        this.description = description;
+        this.name = name;
+        this.category = category;
+    }
+
+    public UUID getMenuItemUUID() {
+        return menuItemUUID;
+    }
+
+    public void setMenuItemUUID(UUID menuItemUUID) {
+        this.menuItemUUID = menuItemUUID;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public CATEGORIES getCategory() {
+        return category;
+    }
+
+    public void setCategory(CATEGORIES category) {
+        this.category = category;
+    }
 
     public float getPrice() {
         return price;
@@ -51,5 +97,17 @@ public class MenuItem_T implements java.io.Serializable {
 
     public void setAvailability(AVAILABILITY availability) {
         this.availability = availability;
+    }
+
+    @Override
+    public String toString() {
+        return "MenuItem_T{" +
+                "menuItemUUID=" + menuItemUUID +
+                ", price=" + price +
+                ", availability=" + availability +
+                ", description='" + description + '\'' +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                '}';
     }
 }

@@ -1,4 +1,4 @@
-package Views.Main;
+package Views.MainViews;
 
 import Views.CustomerViews.CustomerBaseView;
 import Views.StaffViews.StaffBaseView;
