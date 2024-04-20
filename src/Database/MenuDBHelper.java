@@ -1,6 +1,5 @@
 package Database;
 
-import Database.DataStructs.Branch_T;
 import Database.DataStructs.MenuItem_T;
 
 public class MenuDBHelper extends DatabaseHelper {

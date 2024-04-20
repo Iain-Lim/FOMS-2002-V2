@@ -9,7 +9,7 @@ package Database.DataStructs;
 
 import java.util.UUID;
 
-public class MenuItem_T implements java.io.Serializable {
+public class MenuItem_T implements IDatabaseItem_T {
 
     /**
      * MenuItem category
@@ -108,6 +108,17 @@ public class MenuItem_T implements java.io.Serializable {
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
                 ", category=" + category +
+                '}';
+    }
+
+    @Override
+    public String prettyPrint() {
+        return "MenuItem_T{" +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", availability=" + availability +
+                ", category=" + category + '\'' +
                 '}';
     }
 }

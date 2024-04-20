@@ -31,7 +31,16 @@ public class UIMenuWithExtraView extends UIMenuView {
     }
 
     @Override
-    protected UIView getNextView() {
+    public boolean hasNextView() {
+//            if view is unable to provide what user request, send error
+        if (this.subViews == null || this.myExtraSubViews == null) return false;
+
+        return this.subViews.length >= 1 &&
+                (this.user_request - 1) <= (this.subViews.length + this.myExtraSubViews.length - 2);
+    }
+
+    @Override
+    public UIView getNextView() {
         UIView subView;
         int requestedViewIdx = this.user_request-1;
 

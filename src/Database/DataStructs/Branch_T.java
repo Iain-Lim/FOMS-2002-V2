@@ -3,7 +3,7 @@ package Database.DataStructs;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Branch_T implements java.io.Serializable {
+public class Branch_T implements IDatabaseItem_T {
     private UUID branchId;
     public ArrayList<MenuItem_T> menuItems;
     private String branchName;
@@ -50,6 +50,14 @@ public class Branch_T implements java.io.Serializable {
                 "branchId=" + branchId +
                 ", menuItems=" + menuItems +
                 ", branchName='" + branchName + '\'' +
+                '}';
+    }
+
+    @Override
+    public String prettyPrint() {
+        return "Branch_T{" +
+                ", branchName='" + branchName +
+                ", menuItems=" + menuItems + '\'' +
                 '}';
     }
 }

@@ -1,6 +1,5 @@
 package Database;
 
-import Database.DataStructs.Branch_T;
 import Database.DataStructs.Order_T;
 
 public class OrderDBHelper extends DatabaseHelper {

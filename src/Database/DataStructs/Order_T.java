@@ -2,10 +2,9 @@ package Database.DataStructs;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.UUID;
 
-public class Order_T implements java.io.Serializable {
+public class Order_T implements IDatabaseItem_T {
     private UUID orderId;
     private UUID branchId;
     private UUID customerId;
@@ -52,5 +51,21 @@ public class Order_T implements java.io.Serializable {
 
     public void setMenuItems(ArrayList<MenuItem_T> menuItems) {
         this.menuItems = menuItems;
+    }
+
+    @Override
+    public String toString() {
+        return "Order_T{" +
+                "orderId=" + orderId +
+                ", branchId=" + branchId +
+                ", customerId=" + customerId +
+                ", ts=" + ts +
+                ", menuItems=" + menuItems +
+                '}';
+    }
+
+    @Override
+    public String prettyPrint() {
+        return this.toString();
     }
 }

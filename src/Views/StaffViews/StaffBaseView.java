@@ -1,6 +1,5 @@
 package Views.StaffViews;
 
-import Backend.BranchManagerStaff;
 import Backend.Staff;
 import Database.DataStructs.StaffType;
 import Database.DataStructs.User_T;

@@ -2,9 +2,6 @@ package Database;
 
 import Database.DataStructs.Branch_T;
 import Database.DataStructs.MenuItem_T;
-import Database.DataStructs.User_T;
-
-import java.io.Serializable;
 
 public class BranchDBHelper extends DatabaseHelper {
     public BranchDBHelper(String databaseString) {

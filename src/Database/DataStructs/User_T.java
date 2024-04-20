@@ -2,7 +2,7 @@ package Database.DataStructs;
 
 import java.util.UUID;
 
-public class User_T implements java.io.Serializable {
+public class User_T implements IDatabaseItem_T {
     private UUID userId;
     private String username;
     private String password;
@@ -45,6 +45,13 @@ public class User_T implements java.io.Serializable {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", isStaff=" + isStaff +
+                ", staffType=" + staffType +
+                '}';
+    }
+
+    public String prettyPrint() {
+        return "User_T{" +
+                ", username='" + username + '\'' +
                 ", staffType=" + staffType +
                 '}';
     }

@@ -1,6 +1,7 @@
 package Backend;
 
-public class User {
+import Database.DataStructs.User_T;
 
+public class User {
 }
 

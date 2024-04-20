@@ -1,10 +1,9 @@
 package Main;
 
 import Database.BranchDBHelper;
+import Database.DataStructs.*;
 import Database.DataStructs.Branch_T;
 import Database.DataStructs.MenuItem_T;
-import Database.DataStructs.StaffType;
-import Database.DataStructs.User_T;
 import Database.MenuDBHelper;
 import Database.OrderDBHelper;
 import Database.UserDBHelper;
@@ -30,7 +29,7 @@ public class Main {
 //            open and get from database
             open_databases();
 
-            debug_addStubData();
+//            debug_addStubData();
             showAllDatabases();
 
 //            call main display function, do not modify
@@ -47,16 +46,16 @@ public class Main {
 
     public static void showAllDatabases() {
         System.out.println("User database: " + userDatabaseHelper.getAllFromDatabase().size());
-        userDatabaseHelper.printAllInDatabase();
+        userDatabaseHelper.printAllInDatabase(false);
 
         System.out.println("Menu database: " + menuDBHelper.getAllFromDatabase().size());
-        menuDBHelper.printAllInDatabase();
+        menuDBHelper.printAllInDatabase(false);
 
         System.out.println("Branch database: " + branchDBHelper.getAllFromDatabase().size());
-        branchDBHelper.printAllInDatabase();
+        branchDBHelper.printAllInDatabase(false);
 
         System.out.println("Order database: " + orderDBHelper.getAllFromDatabase().size());
-        orderDBHelper.printAllInDatabase();
+        orderDBHelper.printAllInDatabase(false);
     }
 
     public static void debug_addStubData() {
