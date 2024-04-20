@@ -68,16 +68,11 @@ public class UIMenuView extends UIView {
 //            if user request is 0, they want to go back
             return ViewStatus.GO_BACK;
         } else {
-//            if view is unable to provide what user request, send error
-            if (this.subViews == null ||
-                    this.subViews.length < 1 ||
-                    (this.user_request - 1) > (this.subViews.length - 1)
-            ) {
-                return ViewStatus.ERROR;
-            }
+
+            if (!hasNextView()) return ViewStatus.ERROR;
 
 //            create new view
-            UIView subView = getNextView();
+            UIView subView = this.getNextView();
 
 //            if view exists, call `showAndQuery`
             if (subView != null) {
@@ -89,11 +84,21 @@ public class UIMenuView extends UIView {
         }
     }
 
-    protected UIView getNextView() {
+    public boolean hasNextView() {
+//            if view is unable to provide what user request, send error
+        if (this.subViews == null ||
+                this.subViews.length < 1 ||
+                (this.user_request - 1) > (this.subViews.length - 1)
+        ) {
+            return false;
+        }
+        return true;
+    }
+
+    public UIView getNextView() {
         UIView subView = this.subViews[this.user_request-1];
         return subView;
     }
-
 
     @Override
     public ViewStatus showAndQuery() {

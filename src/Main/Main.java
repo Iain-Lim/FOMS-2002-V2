@@ -1,10 +1,9 @@
 package Main;
 
 import Database.BranchDBHelper;
-import Database.DataStructs.Branch_T;
-import Database.DataStructs.MenuItem_T;
-import Database.DataStructs.StaffType;
-import Database.DataStructs.User_T;
+import Database.DataStructs.*;
+import Database.DataStructs.Branch_TI;
+import Database.DataStructs.MenuItem_TI;
 import Database.MenuDBHelper;
 import Database.OrderDBHelper;
 import Database.UserDBHelper;
@@ -47,49 +46,49 @@ public class Main {
 
     public static void showAllDatabases() {
         System.out.println("User database: " + userDatabaseHelper.getAllFromDatabase().size());
-        userDatabaseHelper.printAllInDatabase();
+        userDatabaseHelper.printAllInDatabase(false);
 
         System.out.println("Menu database: " + menuDBHelper.getAllFromDatabase().size());
-        menuDBHelper.printAllInDatabase();
+        menuDBHelper.printAllInDatabase(false);
 
         System.out.println("Branch database: " + branchDBHelper.getAllFromDatabase().size());
-        branchDBHelper.printAllInDatabase();
+        branchDBHelper.printAllInDatabase(false);
 
         System.out.println("Order database: " + orderDBHelper.getAllFromDatabase().size());
-        orderDBHelper.printAllInDatabase();
+        orderDBHelper.printAllInDatabase(false);
     }
 
     public static void debug_addStubData() {
-        User_T user;
+        User_TI user;
         String username;
         for (int i = 0; i < 5; i++) {
             username = "user_" + i;
-            user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
+            user = new User_TI(username, "password", true, StaffType.NORMAL_STAFF);
             userDatabaseHelper.addToDatabase(user);
         }
         for (int i = 5; i < 10; i++) {
             username = "user_" + i;
-            user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
+            user = new User_TI(username, "password", true, StaffType.BRANCH_MANAGER);
             userDatabaseHelper.addToDatabase(user);
         }
 
         username = "admin";
-        user = new User_T(username, "admin", true, StaffType.ADMIN);
+        user = new User_TI(username, "admin", true, StaffType.ADMIN);
         userDatabaseHelper.addToDatabase(user);
 
-        Branch_T branch;
-        branch = new Branch_T("Changi City Point");
+        Branch_TI branch;
+        branch = new Branch_TI("Changi City Point");
 
-        MenuItem_T menuItem;
-        menuItem = new MenuItem_T(10.10f, MenuItem_T.AVAILABILITY.AVAILABLE, "Hot Tacos", "Hot Tacos", MenuItem_T.CATEGORIES.SET_MEAL);
+        MenuItem_TI menuItem;
+        menuItem = new MenuItem_TI(10.10f, MenuItem_TI.AVAILABILITY.AVAILABLE, "Hot Tacos", "Hot Tacos", MenuItem_TI.CATEGORIES.SET_MEAL);
         menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
 
-        menuItem = new MenuItem_T(2.10f, MenuItem_T.AVAILABILITY.AVAILABLE, "Ice Milo", "Ice Milo", MenuItem_T.CATEGORIES.DRINK);
+        menuItem = new MenuItem_TI(2.10f, MenuItem_TI.AVAILABILITY.AVAILABLE, "Ice Milo", "Ice Milo", MenuItem_TI.CATEGORIES.DRINK);
         menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
 
-        menuItem = new MenuItem_T(0.90f, MenuItem_T.AVAILABILITY.AVAILABLE, "Cheese Fries", "Cheese Fries", MenuItem_T.CATEGORIES.SIDE);
+        menuItem = new MenuItem_TI(0.90f, MenuItem_TI.AVAILABILITY.AVAILABLE, "Cheese Fries", "Cheese Fries", MenuItem_TI.CATEGORIES.SIDE);
         menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
 

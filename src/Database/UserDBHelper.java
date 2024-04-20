@@ -1,17 +1,17 @@
 package Database;
 
-import Database.DataStructs.User_T;
+import Database.DataStructs.User_TI;
 
 public class UserDBHelper extends DatabaseHelper {
     public UserDBHelper(String databaseString) {
         super(databaseString);
     }
 
-    public int idxInDatabase_username(User_T userPartial, boolean getFirst) {
+    public int idxInDatabase_username(User_TI userPartial, boolean getFirst) {
         int idx = -1;
-        User_T userTemp;
+        User_TI userTemp;
         for (int i = 0; i < this.databaseObject.size(); i++) {
-            userTemp = (User_T) this.databaseObject.get(i);
+            userTemp = (User_TI) this.databaseObject.get(i);
             if (userPartial.getUsername().equals(userTemp.getUsername())) {
                 idx = i;
                 if (getFirst) {
@@ -22,10 +22,10 @@ public class UserDBHelper extends DatabaseHelper {
         return idx;
     }
 
-    public boolean isInDatabase(User_T userPartial) {
-        User_T userTemp;
+    public boolean isInDatabase(User_TI userPartial) {
+        User_TI userTemp;
         for (int i = 0; i < this.databaseObject.size(); i++) {
-            userTemp = (User_T) this.databaseObject.get(i);
+            userTemp = (User_TI) this.databaseObject.get(i);
             if (userPartial.getUsername().equals(userTemp.getUsername())) {
                 return true;
             }
@@ -33,7 +33,7 @@ public class UserDBHelper extends DatabaseHelper {
         return false;
     }
 
-    public boolean addToDatabase(User_T userFull) {
+    public boolean addToDatabase(User_TI userFull) {
         if (this.isInDatabase(userFull)) {
 //            username exists
             return false;
@@ -42,13 +42,13 @@ public class UserDBHelper extends DatabaseHelper {
     }
 
 //    we can set a enum for status
-    public User_T verifyLogin(User_T userPartial) {
+    public User_TI verifyLogin(User_TI userPartial) {
         int idx = this.idxInDatabase_username(userPartial, true);
 
         //        username DNE
         if (idx == -1) return null;
 
-        User_T userTemp = (User_T) this.getFromDatabase(idx);
+        User_TI userTemp = (User_TI) this.getFromDatabase(idx);
 
         boolean verified = false;
         verified = userTemp.verifyPassword(userPartial);
@@ -57,12 +57,12 @@ public class UserDBHelper extends DatabaseHelper {
         return null;
     }
 
-    public boolean updateUserPassword(User_T userPartial) {
+    public boolean updateUserPassword(User_TI userPartial) {
         int idx = this.idxInDatabase_username(userPartial, true);
         //        username DNE
         if (idx == -1) return false;
 
-        User_T userTemp = (User_T) this.getFromDatabase(idx);
+        User_TI userTemp = (User_TI) this.getFromDatabase(idx);
         userTemp.setPassword(userPartial.getPassword());
 
         this.updateDataInDatabase(idx, userTemp);

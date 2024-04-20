@@ -1,12 +1,14 @@
 package Database;
 
+import Database.DataStructs.IDatabaseItem_T;
+
 import java.io.*;
 import java.util.ArrayList;
 
 public class DatabaseHelper {
     protected String databasePath = "";
 
-    protected ArrayList<Serializable> databaseObject;
+    protected ArrayList<IDatabaseItem_T> databaseObject;
 
     public DatabaseHelper(String databasePath) {
         this.databasePath = databasePath;
@@ -29,20 +31,20 @@ public class DatabaseHelper {
         return true;
     }
 
-    public boolean addToDatabase(Serializable obj) {
+    public boolean addToDatabase(IDatabaseItem_T obj) {
         this.databaseObject.add(obj);
         return true;
     }
 
-    public void updateDataInDatabase(int idx, Serializable obj) {
+    public void updateDataInDatabase(int idx, IDatabaseItem_T obj) {
         this.databaseObject.set(idx, obj);
     }
 
-    public boolean isInDatabase(Serializable obj) {
+    public boolean isInDatabase(IDatabaseItem_T obj) {
         return this.databaseObject.contains(obj);
     }
 
-    public int idxInDatabase(Serializable obj) {
+    public int idxInDatabase(IDatabaseItem_T obj) {
         return this.databaseObject.indexOf(obj);
     }
 
@@ -54,25 +56,25 @@ public class DatabaseHelper {
         }
     }
 
-    public void removeFromDatabase(Serializable obj) {
+    public void removeFromDatabase(IDatabaseItem_T obj) {
         this.databaseObject.remove(obj);
     }
 
     public void removeAllFromDatabase() {
-        this.databaseObject = new ArrayList<Serializable>();
+        this.databaseObject = new ArrayList<IDatabaseItem_T>();
     }
 
-    public Serializable getFromDatabase(int idx) {
+    public IDatabaseItem_T getFromDatabase(int idx) {
         return this.databaseObject.get(idx);
     }
 
-    public ArrayList<Serializable> getAllFromDatabase() {
+    public ArrayList<IDatabaseItem_T> getAllFromDatabase() {
         return this.databaseObject;
     }
 
     public boolean getFromDb() {
         boolean isOk = false;
-        ArrayList<Serializable> tempDatabaseObject = new ArrayList<>();
+        ArrayList<IDatabaseItem_T> tempDatabaseObject = new ArrayList<>();
 
         ObjectInputStream ios = null;
         try {
@@ -87,7 +89,7 @@ public class DatabaseHelper {
             while (true) {
                 temp = ios.readObject();
                 if(temp == null) break;
-                tempDatabaseObject.add((Serializable) temp);
+                tempDatabaseObject.add((IDatabaseItem_T) temp);
             }
         } catch (Exception ignored) { }
 
@@ -96,13 +98,13 @@ public class DatabaseHelper {
             isOk = true;
         } catch (IOException ignored) { }
 
-        this.databaseObject = (ArrayList<Serializable>) tempDatabaseObject.clone();
+        this.databaseObject = (ArrayList<IDatabaseItem_T>) tempDatabaseObject.clone();
         return isOk;
     }
 
-    public void printAllInDatabase() {
-        for (Serializable obj : this.databaseObject) {
-            System.out.println(obj.toString());
+    public void printAllInDatabase(boolean prettyPrint) {
+        for (IDatabaseItem_T obj : this.databaseObject) {
+            System.out.println(prettyPrint? obj.prettyPrint() : obj.toString());
         }
     }
 }

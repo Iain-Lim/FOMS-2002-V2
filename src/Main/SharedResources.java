@@ -1,9 +1,8 @@
 package Main;
 
 import Backend.Staff;
-import Backend.User;
 import Database.BranchDBHelper;
-import Database.DataStructs.User_T;
+import Database.DataStructs.User_TI;
 import Database.MenuDBHelper;
 import Database.OrderDBHelper;
 import Database.UserDBHelper;
@@ -47,7 +46,7 @@ public class SharedResources {
     }
 
     public static Staff currStaff;
-    public static User_T currentUser;
+    public static User_TI currentUser;
 
     public static String jumpToView = "";
 
@@ -79,11 +78,11 @@ public class SharedResources {
         SharedResources.userDatabaseHelper = userDatabaseHelper;
     }
 
-    public static User_T getCurrentUser() {
+    public static User_TI getCurrentUser() {
         return currentUser;
     }
 
-    public static void setCurrentUser(User_T currentUser) {
+    public static void setCurrentUser(User_TI currentUser) {
         SharedResources.currentUser = currentUser;
     }
 }

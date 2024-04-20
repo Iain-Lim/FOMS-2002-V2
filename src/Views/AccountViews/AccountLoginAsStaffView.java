@@ -4,7 +4,7 @@ import Backend.Admin;
 import Backend.BranchManagerStaff;
 import Backend.NormalStaff;
 import Backend.Staff;
-import Database.DataStructs.User_T;
+import Database.DataStructs.User_TI;
 import Database.UserDBHelper;
 import Main.SharedResources;
 import Views.UIQueryView;
@@ -34,8 +34,8 @@ public class AccountLoginAsStaffView extends UIQueryView {
 
     @Override
     public ViewStatus handleQuery() {
-        User_T userPartial = new User_T(username, password);
-        User_T userVerified = userDBHelper.verifyLogin(userPartial);
+        User_TI userPartial = new User_TI(username, password);
+        User_TI userVerified = userDBHelper.verifyLogin(userPartial);
 
         if (userVerified != null) {
             SharedResources.setCurrentUser(userVerified);
@@ -48,7 +48,7 @@ public class AccountLoginAsStaffView extends UIQueryView {
     }
 
     private void setStaffObj() {
-        User_T currUser = SharedResources.getCurrentUser();
+        User_TI currUser = SharedResources.getCurrentUser();
         Staff currStaff = null;
 
         if (currUser != null) {

@@ -9,7 +9,7 @@ package Database.DataStructs;
 
 import java.util.UUID;
 
-public class MenuItem_T implements java.io.Serializable {
+public class MenuItem_TI implements IDatabaseItem_T {
 
     /**
      * MenuItem category
@@ -39,9 +39,9 @@ public class MenuItem_T implements java.io.Serializable {
     private String name;
     private CATEGORIES category;
 
-    public MenuItem_T() {}
+    public MenuItem_TI() {}
 
-    public MenuItem_T(float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
+    public MenuItem_TI(float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
         this.menuItemUUID = UUID.randomUUID();
         this.price = price;
         this.availability = availability;
@@ -50,7 +50,7 @@ public class MenuItem_T implements java.io.Serializable {
         this.category = category;
     }
 
-    public MenuItem_T(UUID menuItemUUID, float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
+    public MenuItem_TI(UUID menuItemUUID, float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
         this.menuItemUUID = menuItemUUID;
         this.price = price;
         this.availability = availability;
@@ -108,6 +108,17 @@ public class MenuItem_T implements java.io.Serializable {
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
                 ", category=" + category +
+                '}';
+    }
+
+    @Override
+    public String prettyPrint() {
+        return "MenuItem_T{" +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", availability=" + availability +
+                ", category=" + category + '\'' +
                 '}';
     }
 }

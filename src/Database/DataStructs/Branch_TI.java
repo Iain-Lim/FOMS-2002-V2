@@ -3,13 +3,13 @@ package Database.DataStructs;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Branch_T implements java.io.Serializable {
+public class Branch_TI implements IDatabaseItem_T {
     private UUID branchId;
-    public ArrayList<MenuItem_T> menuItems;
+    public ArrayList<MenuItem_TI> menuItems;
     private String branchName;
-    public Branch_T() { }
+    public Branch_TI() { }
 
-    public Branch_T(String branchName) {
+    public Branch_TI(String branchName) {
         this.branchId = UUID.randomUUID();
         this.menuItems = new ArrayList<>();
         this.branchName = branchName;
@@ -31,15 +31,15 @@ public class Branch_T implements java.io.Serializable {
         this.branchName = branchName;
     }
 
-    public ArrayList<MenuItem_T> getMenuItems() {
+    public ArrayList<MenuItem_TI> getMenuItems() {
         return menuItems;
     }
 
-    public void setMenuItems(ArrayList<MenuItem_T> menuItems) {
+    public void setMenuItems(ArrayList<MenuItem_TI> menuItems) {
         this.menuItems = menuItems;
     }
 
-    public boolean addMenuItem(MenuItem_T menuItem) {
+    public boolean addMenuItem(MenuItem_TI menuItem) {
         this.menuItems.add(menuItem);
         return true;
     }
@@ -50,6 +50,14 @@ public class Branch_T implements java.io.Serializable {
                 "branchId=" + branchId +
                 ", menuItems=" + menuItems +
                 ", branchName='" + branchName + '\'' +
+                '}';
+    }
+
+    @Override
+    public String prettyPrint() {
+        return "Branch_T{" +
+                ", branchName='" + branchName +
+                ", menuItems=" + menuItems + '\'' +
                 '}';
     }
 }
