@@ -1,0 +1,21 @@
+name: docs-to-pages
+permissions: write-all
+on:
+    workflow_run:
+      workflows: ["markdown-autodocs"]
+      types:
+        - completed
+
+jobs:
+    copy-to-branches:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+            with:
+              fetch-depth: 0
+          - name: Copy To Branches Action
+            uses: planetoftheweb/copy-to-branches@v1.2
+            env:
+              key: main
+              branch: gh-pages
+              files: docs/* LICENSE
