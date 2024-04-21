@@ -14,7 +14,12 @@ public class CustomerBaseView extends UIMenuWithExtraView {
                 "See Pending Orders"
         };
         this.subViews = new UIView[] {
+                null,
                 new CustomerOrderNewView(),
+                null
         };
+//        this.myExtraSubViews = new UIView[] {
+//                new CustomerOrderNewView(),
+//    };
     }
 }
