@@ -16,5 +16,8 @@ public class CustomerBaseView extends UIMenuWithExtraView {
         this.subViews = new UIView[] {
                 new CustomerOrderNewView(),
         };
+//        this.myExtraSubViews = new UIView[] {
+//                new CustomerOrderNewView(),
+//    };
     }
 }
