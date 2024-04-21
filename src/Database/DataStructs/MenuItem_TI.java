@@ -9,6 +9,13 @@ package Database.DataStructs;
 
 import java.util.UUID;
 
+/**
+* dataStruct holding particulars associated to a singular MenuItem
+* Specifically, price, availability, description, name, category
+*
+* enum -> variable representation of int values
+*/
+
 public class MenuItem_TI implements IDatabaseItem_T {
 
     /**

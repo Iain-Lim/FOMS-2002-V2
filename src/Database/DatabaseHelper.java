@@ -5,6 +5,25 @@ import Database.DataStructs.IDatabaseItem_T;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+* all other specfic databaseHelper Extends this
+* databasePath -> file path to database (to be provided by helper class)
+* databaseObject -> list of databaseItems pertaining to the database itself.
+*
+* The helper classes stores the entire database information from the .data file.
+*
+* Functions provided
+* saveToDB() -> writes the current databaseObject into .data file.
+* ObjectOutputStream using FileOutputStream with databasePath info
+* This works as ObjectOutputStream expects Serilisable interface implemented objects.
+* 
+* As the data is an ArrayList called databaseObject.
+* All subsequent functions uses the fact its an ArrayList to handle database functions.
+* addToDatabase(), updateDataInDatabase(), isInDatabase(), idxInDatabase(), removeFromDatabase()
+* getFromDatabase()
+* 
+*/
+
 public class DatabaseHelper {
     protected String databasePath = "";
 
@@ -18,7 +37,9 @@ public class DatabaseHelper {
     }
 
     public boolean saveToDb() {
+        
         try(
+                // try block with Resources syntax, declare all resources which can be closed.
                 FileOutputStream fout = new FileOutputStream(this.databasePath);
                 ObjectOutputStream oos = new ObjectOutputStream(fout);
         ){

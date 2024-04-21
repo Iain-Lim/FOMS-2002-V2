@@ -1,5 +1,9 @@
 package Database.DataStructs;
 
+/**
+* dataStruct indicating staff type, single char enum.
+*/
+
 public enum StaffType {
     ADMIN('A'), BRANCH_MANAGER('B'), NORMAL_STAFF('S'), NA('N');
 

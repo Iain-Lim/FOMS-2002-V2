@@ -4,6 +4,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+* dataStruct holding particulars associated to an Order
+* Specifically, orderID, branchID, customerID, Timestamp and An ArrayList<MenuItem_TI> of menuItems
+*/
 public class Order_TI implements IDatabaseItem_T {
     private UUID orderId;
     private UUID branchId;

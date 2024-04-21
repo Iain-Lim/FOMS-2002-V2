@@ -3,6 +3,11 @@ package Database.DataStructs;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+* dataStruct holding particulars associated to a singular MenuItem
+* Specifically, branchId, menuItems, branchName
+*/
+
 public class Branch_TI implements IDatabaseItem_T {
     private UUID branchId;
     public ArrayList<MenuItem_TI> menuItems;

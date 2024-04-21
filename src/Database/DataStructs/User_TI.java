@@ -2,6 +2,10 @@ package Database.DataStructs;
 
 import java.util.UUID;
 
+/**
+* dataStruct holding particulars associated to a user
+* Specifically, userId, username, password, isStaff and staffType
+*/
 public class User_TI implements IDatabaseItem_T {
     private UUID userId;
     private String username;
