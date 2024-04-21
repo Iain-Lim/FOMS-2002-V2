@@ -87,6 +87,10 @@ public class MenuItem_TI implements IDatabaseItem_T {
         return price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setPrice(float price) {
         this.price = price;
     }
