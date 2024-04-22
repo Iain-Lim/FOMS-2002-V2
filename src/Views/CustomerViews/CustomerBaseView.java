@@ -3,6 +3,11 @@ package Views.CustomerViews;
 import Database.DataStructs.Branch_TI;
 import Views.UIMenuWithExtraView;
 import Views.UIView;
+import Views.UIQueryView;
+
+
+
+import Main.SharedResources;
 
 public class CustomerBaseView extends UIMenuWithExtraView {
     private Branch_TI currBranch;
@@ -10,16 +15,66 @@ public class CustomerBaseView extends UIMenuWithExtraView {
     public CustomerBaseView() {
         myViewName = "Views.CustomerView";
         this.myViewOptions = new String[] {
-                "Order New",
-                "See Pending Orders"
+                "Choose Branch"
+                //"Order New"
+                //"See Pending Orders"
         };
         this.subViews = new UIView[] {
-                null,
-                new CustomerOrderNewView(),
-                null
+                new CustomerChooseBranchView(),
         };
-//        this.myExtraSubViews = new UIView[] {
-//                new CustomerOrderNewView(),
-//    };
+    }
+
+    @Override
+    public void show() {
+        System.out.println();
+        if (currBranch != null)
+        {
+            System.out.println("Branch: " + currBranch.getBranchName());
+        } else {
+            System.out.println("No Branch Detected");
+        }
+        super.show();
+    }
+
+    @Override
+    public ViewStatus showAndQuery() {
+        currBranch = SharedResources.getCurrentBranch();
+
+        if (currBranch == null) {
+            ViewStatus viewStatus;
+
+            UIQueryView chooseBranch = new CustomerChooseBranchView();
+            viewStatus = chooseBranch.showAndQuery();
+
+            if (viewStatus == ViewStatus.SUCCESS_AND_GO_BACK) {
+                System.out.println("Chose Branch: " + SharedResources.getCurrentBranch().getBranchName());
+                currBranch = SharedResources.getCurrentBranch();
+
+            } else if (viewStatus == ViewStatus.FAIL_AND_GO_BACK) {
+                // Error in branch choice
+                System.out.println("Failed to select branch");
+                return ViewStatus.FAIL_AND_GO_BACK;
+            }
+        }
+
+        // Branch Order Selection
+        if (SharedResources.getCurrentBranch() != null) {
+            String[] viewOption = new String[] {
+                "Order New",
+                "See Pending Orders",
+            };
+            UIView[] subViews = new UIView[] {
+                new CustomerOrderNewView(),
+                new CustomerPendingOrdersView(),
+            };
+
+            this.myExtraViewOptions = viewOption;
+            this.myExtraSubViews = subViews;
+        }
+
+        // continue as user without branch
+        super.showAndQuery();
+
+        return ViewStatus.SUCCESS_AND_GO_BACK;
     }
 }

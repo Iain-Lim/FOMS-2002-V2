@@ -52,6 +52,7 @@ public class UIMenuView extends UIView {
 
         this.user_request = -1;
         try {
+            // TODO how scanner should handle CRLF.
             this.user_request = sc.nextInt();
         } catch (Exception e) {
 //            we can either request user to input again OR
