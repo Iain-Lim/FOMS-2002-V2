@@ -1,6 +1,8 @@
 package Backend;
 
 import Views.UIView;
+import Views.StaffViews.StaffDisplayOrdersView;
+import Views.StaffViews.StaffProcessOrdersView;
 
 public class NormalStaff extends Staff implements INormalStaff {
     @Override
@@ -14,8 +16,8 @@ public class NormalStaff extends Staff implements INormalStaff {
     @Override
     public UIView[] getSubViews() {
         return new UIView[] {
-                null,
-                null
+                new StaffDisplayOrdersView(),
+                new StaffProcessOrdersView()
         };
     }
 }
