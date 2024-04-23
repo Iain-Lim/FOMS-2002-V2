@@ -10,7 +10,7 @@ import Views.UIView;
 import Database.DatabaseHelper;
 import Database.MenuDBHelper;
 import Database.DataStructs.IDatabaseItem_T;
-import Database.DataStructs.MenuItem_TI;
+import Database.DataStructs.MenuItem_T;
 import Main.SharedResources;
 
 public class CustomerOrderNewView extends UIMenuView {
@@ -26,7 +26,7 @@ public class CustomerOrderNewView extends UIMenuView {
         this.myViewOptions = new String[databaseItems.size()]; {
 
             for (int i = 0; i < databaseItems.size(); i++) {
-                MenuItem_TI item = (MenuItem_TI) databaseItems.get(i);
+                MenuItem_T item = (MenuItem_T) databaseItems.get(i);
                 myViewOptions[i] = item.getName() + " - $" + item.getPrice();
             }
 

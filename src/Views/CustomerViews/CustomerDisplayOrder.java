@@ -2,19 +2,19 @@ package Views.CustomerViews;
 
 import Views.UIQueryView;
 import Database.OrderDBHelper;
-import Database.DataStructs.Branch_TI;
+import Database.DataStructs.Branch_T;
 import Database.DataStructs.IDatabaseItem_T;
-import Database.DataStructs.Order_TI;
+import Database.DataStructs.Order_T;
 import Main.SharedResources;
 import java.util.Scanner;
 import java.util.UUID;
 import java.util.ArrayList;
-import Database.DataStructs.MenuItem_TI;
+import Database.DataStructs.MenuItem_T;
 
 // check placed order status using order ID. 
 public class CustomerDisplayOrder extends UIQueryView {
     // private Branch_TI chosenBranch;
-    private Order_TI order;
+    private Order_T order;
     private UUID customerOrderID;
     private final OrderDBHelper orderDBHelper;
 
@@ -47,18 +47,18 @@ public class CustomerDisplayOrder extends UIQueryView {
             ArrayList<IDatabaseItem_T> orderDatabase = orderDBHelper.getAllFromDatabase();
             for (int i=0; i<orderDatabase.size(); i++){
                 // Search for order
-                order = (Order_TI) orderDatabase.get(i);
+                order = (Order_T) orderDatabase.get(i);
                 if (order.getOrderId() == customerOrderID)
                 {
                     // Order found, display order
-                    ArrayList<MenuItem_TI> menuItemList = order.getMenuItems();
+                    ArrayList<MenuItem_T> menuItemList = order.getMenuItems();
                     
                     System.out.println("OrderID: " + order.getOrderId());
                     System.out.println("Total Items: " + menuItemList.size());
 
                     for (int j=0; j<menuItemList.size(); j++){
                         // For each menuitem, print!
-                        MenuItem_TI menuItem = menuItemList.get(j);
+                        MenuItem_T menuItem = menuItemList.get(j);
                         System.out.println((j+1) + " " + menuItem.getName());
                     }
 

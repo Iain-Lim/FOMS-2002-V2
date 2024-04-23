@@ -16,7 +16,7 @@ import java.util.UUID;
 * enum -> variable representation of int values
 */
 
-public class MenuItem_TI implements IDatabaseItem_T {
+public class MenuItem_T implements IDatabaseItem_T {
 
     /**
      * MenuItem category
@@ -46,9 +46,9 @@ public class MenuItem_TI implements IDatabaseItem_T {
     private String name;
     private CATEGORIES category;
 
-    public MenuItem_TI() {}
+    public MenuItem_T() {}
 
-    public MenuItem_TI(float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
+    public MenuItem_T(float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
         this.menuItemUUID = UUID.randomUUID();
         this.price = price;
         this.availability = availability;
@@ -57,7 +57,7 @@ public class MenuItem_TI implements IDatabaseItem_T {
         this.category = category;
     }
 
-    public MenuItem_TI(UUID menuItemUUID, float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
+    public MenuItem_T(UUID menuItemUUID, float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
         this.menuItemUUID = menuItemUUID;
         this.price = price;
         this.availability = availability;

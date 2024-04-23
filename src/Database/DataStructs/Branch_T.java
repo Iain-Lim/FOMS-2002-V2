@@ -8,13 +8,13 @@ import java.util.UUID;
 * Specifically, branchId, menuItems, branchName
 */
 
-public class Branch_TI implements IDatabaseItem_T {
+public class Branch_T implements IDatabaseItem_T {
     private UUID branchId;
-    public ArrayList<MenuItem_TI> menuItems;
+    public ArrayList<MenuItem_T> menuItems;
     private String branchName;
-    public Branch_TI() { }
+    public Branch_T() { }
 
-    public Branch_TI(String branchName) {
+    public Branch_T(String branchName) {
         this.branchId = UUID.randomUUID();
         this.menuItems = new ArrayList<>();
         this.branchName = branchName;
@@ -36,15 +36,15 @@ public class Branch_TI implements IDatabaseItem_T {
         this.branchName = branchName;
     }
 
-    public ArrayList<MenuItem_TI> getMenuItems() {
+    public ArrayList<MenuItem_T> getMenuItems() {
         return menuItems;
     }
 
-    public void setMenuItems(ArrayList<MenuItem_TI> menuItems) {
+    public void setMenuItems(ArrayList<MenuItem_T> menuItems) {
         this.menuItems = menuItems;
     }
 
-    public boolean addMenuItem(MenuItem_TI menuItem) {
+    public boolean addMenuItem(MenuItem_T menuItem) {
         this.menuItems.add(menuItem);
         return true;
     }

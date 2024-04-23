@@ -1,6 +1,6 @@
 package Views.CustomerViews;
 
-import Database.DataStructs.Branch_TI;
+import Database.DataStructs.Branch_T;
 import Views.UIMenuWithExtraView;
 import Views.UIView;
 import Views.UIQueryView;
@@ -10,7 +10,7 @@ import Views.UIQueryView;
 import Main.SharedResources;
 
 public class CustomerBaseView extends UIMenuWithExtraView {
-    private Branch_TI currBranch;
+    private Branch_T currBranch;
 
     public CustomerBaseView() {
         myViewName = "Views.CustomerView";

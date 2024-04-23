@@ -5,7 +5,7 @@ import Views.UIQueryView;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Database.DataStructs.Branch_TI;
+import Database.DataStructs.Branch_T;
 import Database.DataStructs.IDatabaseItem_T;
 import Main.SharedResources;
 
@@ -32,7 +32,7 @@ public class CustomerChooseBranchView extends UIQueryView {
         }
 
         for (int i=0; i<branches.size(); i++){
-            Branch_TI branch = (Branch_TI) branches.get(i);
+            Branch_T branch = (Branch_T) branches.get(i);
             System.out.println("Branch Number " + (i+1) + "] " + branch.getBranchName());
         }
 
@@ -42,7 +42,7 @@ public class CustomerChooseBranchView extends UIQueryView {
         // TODO implement error checking
         int branchChoice = Integer.parseInt(sc.nextLine());
 
-        Branch_TI chosenBranch = (Branch_TI) branches.get(branchChoice-1);
+        Branch_T chosenBranch = (Branch_T) branches.get(branchChoice-1);
         chosenBranchName = chosenBranch.getBranchName();
         SharedResources.setCurrentBranch(chosenBranch);
     }

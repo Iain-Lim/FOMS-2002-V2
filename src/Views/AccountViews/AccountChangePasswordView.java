@@ -1,14 +1,14 @@
 package Views.AccountViews;
 
 import Database.DataStructs.StaffType;
-import Database.DataStructs.User_TI;
+import Database.DataStructs.User_T;
 import Main.SharedResources;
 import Views.UIQueryView;
 
 import java.util.Scanner;
 
 public class AccountChangePasswordView extends UIQueryView {
-    private User_TI currUser;
+    private User_T currUser;
     private String newPassword;
     private String oldPassword;
 
@@ -43,7 +43,7 @@ public class AccountChangePasswordView extends UIQueryView {
             return ViewStatus.ERROR;
         }
 
-        User_TI userPartial = new User_TI(currUser.getUsername(), oldPassword);
+        User_T userPartial = new User_T(currUser.getUsername(), oldPassword);
 
         if (!currUser.verifyPassword(userPartial)) {
             System.out.println("Current Password incorrect...");

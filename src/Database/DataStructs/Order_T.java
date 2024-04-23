@@ -8,14 +8,14 @@ import java.util.UUID;
 * dataStruct holding particulars associated to an Order
 * Specifically, orderID, branchID, customerID, Timestamp and An ArrayList<MenuItem_TI> of menuItems
 */
-public class Order_TI implements IDatabaseItem_T {
+public class Order_T implements IDatabaseItem_T {
     private UUID orderId;
     private UUID branchId;
     private UUID customerId;
     private Timestamp ts;
-    private ArrayList<MenuItem_TI> menuItems;
+    private ArrayList<MenuItem_T> menuItems;
 
-    public Order_TI() { }
+    public Order_T() { }
 
     public UUID getOrderId() {
         return orderId;
@@ -49,11 +49,11 @@ public class Order_TI implements IDatabaseItem_T {
         this.ts = ts;
     }
 
-    public ArrayList<MenuItem_TI> getMenuItems() {
+    public ArrayList<MenuItem_T> getMenuItems() {
         return menuItems;
     }
 
-    public void setMenuItems(ArrayList<MenuItem_TI> menuItems) {
+    public void setMenuItems(ArrayList<MenuItem_T> menuItems) {
         this.menuItems = menuItems;
     }
 

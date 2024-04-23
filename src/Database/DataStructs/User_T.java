@@ -6,7 +6,7 @@ import java.util.UUID;
 * dataStruct holding particulars associated to a user
 * Specifically, userId, username, password, isStaff and staffType
 */
-public class User_TI implements IDatabaseItem_T {
+public class User_T implements IDatabaseItem_T {
     private UUID userId;
     private String username;
     private String password;
@@ -16,17 +16,17 @@ public class User_TI implements IDatabaseItem_T {
     public void setPassword(String password) {
         this.password = password;
     }
-    public User_TI() {}
-    public User_TI(String username) {
+    public User_T() {}
+    public User_T(String username) {
         this.username = username;
     }
 
-    public User_TI(String username, String password) {
+    public User_T(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public User_TI(UUID userId, String username, String password, boolean isStaff, StaffType staffType) {
+    public User_T(UUID userId, String username, String password, boolean isStaff, StaffType staffType) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -34,7 +34,7 @@ public class User_TI implements IDatabaseItem_T {
         this.staffType = staffType;
     }
 
-    public User_TI(String username, String password, boolean isStaff, StaffType staffType) {
+    public User_T(String username, String password, boolean isStaff, StaffType staffType) {
         this.userId = UUID.randomUUID();
         this.username = username;
         this.password = password;
@@ -80,7 +80,7 @@ public class User_TI implements IDatabaseItem_T {
         return password;
     }
 
-    public boolean verifyPassword(User_TI userPartial) {
+    public boolean verifyPassword(User_T userPartial) {
         return this.password.equals(userPartial.getPassword());
     }
 
