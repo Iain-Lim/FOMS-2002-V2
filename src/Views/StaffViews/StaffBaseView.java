@@ -2,7 +2,7 @@ package Views.StaffViews;
 
 import Backend.Staff;
 import Database.DataStructs.StaffType;
-import Database.DataStructs.User_T;
+import Database.DataStructs.User_TI;
 import Main.SharedResources;
 import Views.AccountViews.AccountSettingsView;
 import Views.AccountViews.AccountLoginAsStaffView;
@@ -11,7 +11,7 @@ import Views.UIQueryView;
 import Views.UIView;
 
 public class StaffBaseView extends UIMenuWithExtraView {
-    private User_T currUser;
+    private User_TI currUser;
     private Staff staffObj;
 
     public StaffBaseView() {
