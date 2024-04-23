@@ -5,7 +5,7 @@ import Views.UIView;
 
 public class AccountDisplayAllView extends UIView {
     public AccountDisplayAllView() {
-        this.myViewName = "Views.AccountViews.AccountDisplayAllView";
+        this.myViewName = this.getClass().getCanonicalName();
     }
 
     @Override

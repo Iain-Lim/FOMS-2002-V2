@@ -1,5 +1,6 @@
 package Main;
 
+import Backend.Branch;
 import Database.BranchDBHelper;
 import Database.DataStructs.*;
 import Database.DataStructs.Branch_T;
@@ -17,7 +18,6 @@ public class Main {
     public static OrderDBHelper orderDBHelper;
     public static MenuDBHelper menuDBHelper;
 
-
     public static void main(String[] args) {
         userDatabaseHelper = new UserDBHelper("./Data/userDatabase.ser");
         branchDBHelper = new BranchDBHelper("./Data/branchDatabase.ser");
@@ -29,13 +29,12 @@ public class Main {
 //            open and get from database
             open_databases();
 
-//            debug_addStubData();
+            debug_addStubData();
             showAllDatabases();
 
 //            call main display function, do not modify
             mainView = new MainView();
             mainView.showAndQuery();
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,7 +79,7 @@ public class Main {
         branch = new Branch_T("Changi City Point");
 
         MenuItem_T menuItem;
-        menuItem = new MenuItem_T(10.10f, MenuItem_T.AVAILABILITY.AVAILABLE, "Hot Tacos", "Hot Tacos", MenuItem_T.CATEGORIES.SET_MEAL);
+        menuItem = new MenuItem_T(10.10f, MenuItem_T.AVAILABILITY.NOT_AVAILABLE, "Hot Tacos", "Hot Tacos", MenuItem_T.CATEGORIES.SET_MEAL);
         menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
 
@@ -92,6 +91,9 @@ public class Main {
         menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
 
+        branchDBHelper.addToDatabase(branch);
+
+        branch = new Branch_T("Jurong Point");
         branchDBHelper.addToDatabase(branch);
     }
 

@@ -15,7 +15,7 @@ public class StaffBaseView extends UIMenuWithExtraView {
     private Staff staffObj;
 
     public StaffBaseView() {
-        myViewName = "Views.StaffViews.StaffBaseView";
+       this.myViewName = this.getClass().getCanonicalName();
         this.subViews = new UIView[] {
                 new AccountSettingsView()
         };
@@ -45,12 +45,10 @@ public class StaffBaseView extends UIMenuWithExtraView {
             viewStatus = login.showAndQuery();
 
             if (viewStatus == ViewStatus.SUCCESS_AND_GO_BACK) {
-                System.out.println("Logged in successfully");
                 currUser = SharedResources.getCurrentUser();
 
             } else if (viewStatus == ViewStatus.FAIL_AND_GO_BACK) {
 //                failed to log in
-                System.out.println("Failed to log in");
                 return ViewStatus.FAIL_AND_GO_BACK;
             }
         }

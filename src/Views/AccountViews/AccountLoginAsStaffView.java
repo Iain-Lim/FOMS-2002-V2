@@ -17,7 +17,7 @@ public class AccountLoginAsStaffView extends UIQueryView {
     private final UserDBHelper userDBHelper;
 
     public AccountLoginAsStaffView() {
-        myViewName = "Views.AccountViews.LoginAsStaffView";
+       this.myViewName = this.getClass().getCanonicalName();
         userDBHelper = SharedResources.getUserDatabaseHelper();
     }
 
@@ -41,9 +41,11 @@ public class AccountLoginAsStaffView extends UIQueryView {
             SharedResources.setCurrentUser(userVerified);
             setStaffObj();
 
+            System.out.println("Logged in successfully");
             return ViewStatus.SUCCESS_AND_GO_BACK;
         }
 
+        System.out.println("Failed to log in");
         return ViewStatus.FAIL_AND_GO_BACK;
     }
 

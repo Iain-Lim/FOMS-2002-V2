@@ -4,7 +4,7 @@ import Views.UIView;
 
 public class StaffDisplayOrdersView extends UIView {
     public StaffDisplayOrdersView() {
-        myViewName = "Views.StaffViews.DisplayOrdersView";
+       this.myViewName = this.getClass().getCanonicalName();
     }
 
 }

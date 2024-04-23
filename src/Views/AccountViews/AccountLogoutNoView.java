@@ -5,7 +5,7 @@ import Views.UIView;
 
 public class AccountLogoutNoView extends UIView {
     public AccountLogoutNoView() {
-        this.myViewName = "View.LogOut.NoView";
+        this.myViewName = this.getClass().getCanonicalName();
     }
     @Override
     public ViewStatus showAndQuery() {

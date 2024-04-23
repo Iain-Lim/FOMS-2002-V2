@@ -1,21 +1,42 @@
 package Main;
 
+import Backend.Branch;
 import Backend.Staff;
 import Database.BranchDBHelper;
+import Database.DataStructs.Branch_T;
 import Database.DataStructs.User_T;
 import Database.MenuDBHelper;
 import Database.OrderDBHelper;
 import Database.UserDBHelper;
 
 public class SharedResources {
-    public static UserDBHelper userDatabaseHelper;
-    public static OrderDBHelper orderDBHelper;
-    public static BranchDBHelper branchDBHelper;
-    public static MenuDBHelper menuDBHelper;
-    public static Staff currStaff;
-    public static User_T currentUser;
-    public static String jumpToView = "";
-    public static String errorMessage = "";
+    private static UserDBHelper userDatabaseHelper;
+    private static OrderDBHelper orderDBHelper;
+    private static BranchDBHelper branchDBHelper;
+    private static MenuDBHelper menuDBHelper;
+    private static Staff currStaff;
+    private static User_T currentUser;
+    private static Branch_T currentBranch;
+    private static Branch currentBeBranch;
+    private static String jumpToView = "";
+    private static String errorMessage = "";
+
+    public static Branch getCurrentBeBranch() {
+        return currentBeBranch;
+    }
+
+    public static void setCurrentBeBranch(Branch currentBeBranch) {
+        SharedResources.currentBeBranch = currentBeBranch;
+    }
+
+    public static Branch_T getCurrentBranch() {
+        return currentBranch;
+    }
+
+    public static void setCurrentBranch(Branch_T currentBranch) {
+        SharedResources.currentBranch = currentBranch;
+    }
+
     public static MenuDBHelper getMenuDBHelper() {
         return menuDBHelper;
     }

@@ -20,7 +20,8 @@ public class UIMenuView extends UIView {
     public void show() {
         int i = 0;
         System.out.println();
-        System.out.println(this.myViewName);
+        System.out.println(this.getClass().getCanonicalName());
+//        System.out.println(this.myViewName);
         System.out.print((i) + ": ");
         if (isBaseView) {
             System.out.println("< Exit");

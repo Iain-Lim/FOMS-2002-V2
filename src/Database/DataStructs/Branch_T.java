@@ -55,9 +55,6 @@ public class Branch_T implements IDatabaseItem_T {
 
     @Override
     public String prettyPrint() {
-        return "Branch_T{" +
-                ", branchName='" + branchName +
-                ", menuItems=" + menuItems + '\'' +
-                '}';
+        return this.getBranchName();
     }
 }

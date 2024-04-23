@@ -13,7 +13,7 @@ public class AccountChangePasswordView extends UIQueryView {
     private String oldPassword;
 
     public AccountChangePasswordView() {
-        myViewName = "Views.ModifyUserView";
+       this.myViewName = this.getClass().getCanonicalName();
         currUser = SharedResources.getCurrentUser();
     }
 

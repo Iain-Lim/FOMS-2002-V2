@@ -6,12 +6,11 @@ import Views.UIView;
 
 public class BMDisplayStaffView extends UIView {
     public BMDisplayStaffView() {
-        this.myViewName = "Views.StaffViews.BranchManagerViews.BMDisplayStaffView";
+        this.myViewName = this.getClass().getCanonicalName();
     }
 
     @Override
     public ViewStatus showAndQuery() {
-
         return ViewStatus.OK;
     }
 }

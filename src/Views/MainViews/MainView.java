@@ -7,7 +7,7 @@ import Views.UIView;
 
 public class MainView extends UIMenuView {
     public MainView() {
-        myViewName = "Views.Main.MainView";
+       this.myViewName = this.getClass().getCanonicalName();
         this.myViewOptions = new String[] {
                 "I am a Customer",
                 "I am a Staff",

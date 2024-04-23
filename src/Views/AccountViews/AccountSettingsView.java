@@ -5,7 +5,7 @@ import Views.UIView;
 
 public class AccountSettingsView extends UIMenuView {
     public AccountSettingsView() {
-        this.myViewName = "View.AccountSettings";
+        this.myViewName = this.getClass().getCanonicalName();
         this.subViews = new UIView[] {
                 new AccountLogoutNoView(),
                 new AccountChangePasswordView(),

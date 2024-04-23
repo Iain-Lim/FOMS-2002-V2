@@ -113,12 +113,23 @@ public class MenuItem_T implements IDatabaseItem_T {
 
     @Override
     public String prettyPrint() {
-        return "MenuItem_T{" +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", availability=" + availability +
-                ", category=" + category + '\'' +
-                '}';
+        String ret;
+        ret = "$" + String.format("%.2f", price);
+
+        if (this.getAvailability() == AVAILABILITY.NOT_AVAILABLE) {
+            ret += "\t(Not Available)";
+        }
+
+        ret += "\t" + name;
+
+        return ret;
+
+//        return "MenuItem_T{" +
+//                ", name='" + name + '\'' +
+//                ", description='" + description + '\'' +
+//                ", price=" + price +
+//                ", availability=" + availability +
+//                ", category=" + category + '\'' +
+//                '}';
     }
 }

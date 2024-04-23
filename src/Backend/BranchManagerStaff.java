@@ -36,4 +36,24 @@ public class BranchManagerStaff extends NormalStaff implements IBranchManager {
 
         return ourSubViews;
     }
+
+    @Override
+    public void displayMyStaff() {
+
+    }
+
+    @Override
+    public boolean addToMenu() {
+        return false;
+    }
+
+    @Override
+    public boolean removeFromMenu() {
+        return false;
+    }
+
+    @Override
+    public boolean editFromMenu() {
+        return false;
+    }
 }
