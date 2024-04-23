@@ -15,9 +15,7 @@ public class CustomerBaseView extends UIMenuWithExtraView {
     public CustomerBaseView() {
         myViewName = "Views.CustomerView";
         this.myViewOptions = new String[] {
-                "Choose Branch"
-                //"Order New"
-                //"See Pending Orders"
+                "Choose Branch",
         };
         this.subViews = new UIView[] {
                 new CustomerChooseBranchView(),
@@ -59,17 +57,17 @@ public class CustomerBaseView extends UIMenuWithExtraView {
 
         // Branch Order Selection
         if (SharedResources.getCurrentBranch() != null) {
-            String[] viewOption = new String[] {
+            String[] v = new String[] {
                 "Order New",
-                "See Pending Orders",
+                "See Pending Orders"
             };
-            UIView[] subViews = new UIView[] {
+            UIView[] sv = new UIView[] {
                 new CustomerOrderNewView(),
-                new CustomerPendingOrdersView(),
+                new CustomerPendingOrdersView()
             };
 
-            this.myExtraViewOptions = viewOption;
-            this.myExtraSubViews = subViews;
+            this.myExtraViewOptions = v;
+            this.myExtraSubViews = sv;
         }
 
         // continue as user without branch

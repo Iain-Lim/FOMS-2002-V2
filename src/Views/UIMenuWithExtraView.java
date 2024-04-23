@@ -35,8 +35,9 @@ public class UIMenuWithExtraView extends UIMenuView {
 //            if view is unable to provide what user request, send error
         if (this.subViews == null || this.myExtraSubViews == null) return false;
 
+        // TODO Are we not converting value to index twice??
         return this.subViews.length >= 1 &&
-                (this.user_request - 1) <= (this.subViews.length + this.myExtraSubViews.length - 2);
+                (this.user_request - 1) <= (this.subViews.length + this.myExtraSubViews.length - 1);
     }
 
     @Override
@@ -44,8 +45,10 @@ public class UIMenuWithExtraView extends UIMenuView {
         UIView subView;
         int requestedViewIdx = this.user_request-1;
 
+        // requested index is in ExtraSubViews
         if (this.subViews.length-1 < requestedViewIdx) {
-            requestedViewIdx -= this.subViews.length-1;
+            // should be length, dunnid minus 1
+            requestedViewIdx -= this.subViews.length;
             subView = this.myExtraSubViews[requestedViewIdx];
         } else {
             subView= this.subViews[requestedViewIdx];
