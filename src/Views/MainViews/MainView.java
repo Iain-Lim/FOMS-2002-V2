@@ -13,7 +13,6 @@ public class MainView extends UIMenuView {
                 "I am a Staff",
         };
         this.subViews = new UIView[] {
-            null,
             new CustomerBaseView(),
             new StaffBaseView()
         };
