@@ -17,6 +17,9 @@ public class SharedResources {
     public static User_T currentUser;
     public static String jumpToView = "";
     public static String errorMessage = "";
+    public static Branch_T currBranch;
+
+    
     public static MenuDBHelper getMenuDBHelper() {
         return menuDBHelper;
     }
@@ -42,13 +45,9 @@ public class SharedResources {
         SharedResources.currStaff = currStaff;
     }
 
-    public static Staff currStaff;
-    public static User_T currentUser;
-    public static Branch_T currBranch;
 
-    public static String jumpToView = "";
 
-    public static String errorMessage = "";
+
 
     public SharedResources() {}
 

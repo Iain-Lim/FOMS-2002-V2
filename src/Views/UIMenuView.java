@@ -7,18 +7,10 @@ import java.util.Scanner;
 public class UIMenuView extends UIView {
     protected String[] myViewOptions;
     protected boolean isBaseView = false;
-    protected String viewTitle;
 
     protected int user_request;
 
     public UIMenuView() {
-        this.myViewOptions = new String[] {
-                "There are no options in this view..."
-        };
-    }
-
-    public UIMenuView(String title) {
-        this.viewTitle = title;
         this.myViewOptions = new String[] {
                 "There are no options in this view..."
         };
@@ -70,28 +62,15 @@ public class UIMenuView extends UIView {
     @Override
     final public ViewStatus handleQuery() {
 //        if user_request is less than 0, there's an error
-        System.out.println("User selected option: " + user_request);
-        
-        // changesd >= 0 to > 0
-        if (user_request > 0 && user_request < subViews.length) {
-            System.out.println("Navigating to sub-view: " + subViews[user_request]);
-            return subViews[user_request].showAndQuery();
-        } else {
-            System.out.println("Invalid sub-view index: " + user_request);
-        }
-
         if (this.user_request < 0) {
-            SharedResources.setErrorMessage("Negative input error");
             return ViewStatus.ERROR;
         } else if (this.user_request == 0) {
 //            if user request is 0, they want to go back
             return ViewStatus.GO_BACK;
         } else {
-            System.out.println("Has next view: " + hasNextView());
-            if (!hasNextView()){
-                SharedResources.setErrorMessage("No next view available");
-                return ViewStatus.ERROR;
-            }
+
+            if (!hasNextView()) return ViewStatus.ERROR;
+
 //            create new view
             UIView subView = this.getNextView();
 
@@ -99,7 +78,6 @@ public class UIMenuView extends UIView {
             if (subView != null) {
                 return subView.showAndQuery();
             }
-            SharedResources.setErrorMessage("SubView is null");
 //            should not reach here, if it does, there's an unknown error
             return ViewStatus.ERROR;
         }

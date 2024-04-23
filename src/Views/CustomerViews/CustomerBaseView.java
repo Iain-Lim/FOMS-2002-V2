@@ -4,12 +4,13 @@ import Database.DataStructs.Branch_T;
 import Views.UIMenuWithExtraView;
 import Views.UIView;
 import Views.UIQueryView;
-
+import Views.*;
 
 
 import Main.SharedResources;
 
-public class CustomerBaseView extends UIMenuWithExtraView {
+// Should be menu, override show and query 
+public class CustomerBaseView extends UIMenuView {
     private Branch_T currBranch;
 
     public CustomerBaseView() {
@@ -22,17 +23,17 @@ public class CustomerBaseView extends UIMenuWithExtraView {
         };
     }
 
-    @Override
-    public void show() {
-        System.out.println();
-        if (currBranch != null)
-        {
-            System.out.println("Branch: " + currBranch.getBranchName());
-        } else {
-            System.out.println("No Branch Detected");
-        }
-        super.show();
-    }
+    // @Override
+    // public void show() {
+    //     System.out.println();
+    //     if (currBranch != null)
+    //     {
+    //         System.out.println("Branch: " + currBranch.getBranchName());
+    //     } else {
+    //         System.out.println("No Branch Detected");
+    //     }
+    //     super.show();
+    // }
 
     @Override
     public ViewStatus showAndQuery() {
@@ -55,20 +56,20 @@ public class CustomerBaseView extends UIMenuWithExtraView {
             }
         }
 
-        // Branch Order Selection
-        if (SharedResources.getCurrentBranch() != null) {
-            String[] v = new String[] {
-                "Order New",
-                "See Pending Orders"
-            };
-            UIView[] sv = new UIView[] {
-                new CustomerOrderNewView(),
-                new CustomerPendingOrdersView()
-            };
+        // // Branch Order Selection
+        // if (SharedResources.getCurrentBranch() != null) {
+        //     String[] v = new String[] {
+        //         "Order New",
+        //         "See Pending Orders"
+        //     };
+        //     UIView[] sv = new UIView[] {
+        //         new CustomerOrderNewView(),
+        //         new CustomerPendingOrdersView()
+        //     };
 
-            this.myExtraViewOptions = v;
-            this.myExtraSubViews = sv;
-        }
+        //     this.myExtraViewOptions = v;
+        //     this.myExtraSubViews = sv;
+        // }
 
         // continue as user without branch
         super.showAndQuery();
