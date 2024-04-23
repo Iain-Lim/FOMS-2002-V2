@@ -124,12 +124,6 @@ public class MenuItem_T implements IDatabaseItem_T {
 
     @Override
     public String prettyPrint() {
-        return "MenuItem_T{" +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", availability=" + availability +
-                ", category=" + category + '\'' +
-                '}';
+        return  name + " for $" + price;
     }
 }

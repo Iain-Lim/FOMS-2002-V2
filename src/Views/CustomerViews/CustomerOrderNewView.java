@@ -27,7 +27,7 @@ public class CustomerOrderNewView extends UIMenuView {
 
             for (int i = 0; i < databaseItems.size(); i++) {
                 MenuItem_T item = (MenuItem_T) databaseItems.get(i);
-                myViewOptions[i] = item.getName() + " - $" + item.getPrice();
+                myViewOptions[i] = item.prettyPrint();
             }
 
         };
