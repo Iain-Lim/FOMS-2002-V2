@@ -72,7 +72,8 @@ public class UIMenuView extends UIView {
 //        if user_request is less than 0, there's an error
         System.out.println("User selected option: " + user_request);
         
-        if (user_request >= 0 && user_request < subViews.length) {
+        // changesd >= 0 to > 0
+        if (user_request > 0 && user_request < subViews.length) {
             System.out.println("Navigating to sub-view: " + subViews[user_request]);
             return subViews[user_request].showAndQuery();
         } else {
