@@ -10,7 +10,7 @@ public class MainView extends UIMenuView {
         myViewName = "Views.Main.MainView";
         this.myViewOptions = new String[] {
                 "I am a Customer",
-                "I am a Staff",
+                "I am a Staff"
         };
         this.subViews = new UIView[] {
             new CustomerBaseView(),
