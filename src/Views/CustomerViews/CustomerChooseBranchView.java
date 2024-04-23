@@ -16,21 +16,24 @@ public class CustomerChooseBranchView extends UIQueryView {
 
     String chosenBranchName;
 
+    /* TODO add the display into the show portion */
+
     @Override
     public void query() {
         Scanner sc = new Scanner(System.in);
 
         /* Retrieve and display list of branches */
+        // TODO CALL THE BACKEND
         System.out.println("The Available Branches Are");
         ArrayList<IDatabaseItem_T> branches = SharedResources.branchDBHelper.getAllFromDatabase();
 
         //TODO error checking, maybe reimplement at try-catch
         if (branches.size() == 0){
             System.out.println("No Available Branches");
-            sc.close();
             return;
         }
 
+        /* Try and follow the same format as menu view liddat. */
         for (int i=0; i<branches.size(); i++){
             Branch_T branch = (Branch_T) branches.get(i);
             System.out.println("Branch Number " + (i+1) + "] " + branch.getBranchName());
