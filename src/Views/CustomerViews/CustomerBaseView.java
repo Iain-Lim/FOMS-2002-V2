@@ -16,7 +16,7 @@ public class CustomerBaseView extends UIMenuView {
     public CustomerBaseView() {
         myViewName = "Views.CustomerView";
         this.myViewOptions = new String[] {
-                "Choose Branch",
+                "Change Branch",
         };
         this.subViews = new UIView[] {
                 new CustomerChooseBranchView(),
@@ -46,15 +46,18 @@ public class CustomerBaseView extends UIMenuView {
             viewStatus = chooseBranch.showAndQuery();
 
             if (viewStatus == ViewStatus.SUCCESS_AND_GO_BACK) {
-                System.out.println("Chose Branch: " + SharedResources.getCurrentBranch().getBranchName());
+                //System.out.println("Chose Branch: " + SharedResources.getCurrentBranch().getBranchName());
                 currBranch = SharedResources.getCurrentBranch();
-
+                
             } else if (viewStatus == ViewStatus.FAIL_AND_GO_BACK) {
                 // Error in branch choice
                 System.out.println("Failed to select branch");
                 return ViewStatus.FAIL_AND_GO_BACK;
             }
         }
+
+        System.out.println(this.myViewName);
+        System.out.println(currBranch.getBranchName());
 
         // // Branch Order Selection
         // if (SharedResources.getCurrentBranch() != null) {

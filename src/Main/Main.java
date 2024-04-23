@@ -32,6 +32,7 @@ public class Main {
             debug_addStubData();
             showAllDatabases();
 
+
 //            call main display function, do not modify
             mainView = new MainView();
             mainView.showAndQuery();
@@ -79,6 +80,7 @@ public class Main {
         Branch_T branch;
         branch = new Branch_T("Changi City Point");
 
+
         MenuItem_T menuItem;
         menuItem = new MenuItem_T(10.10f, MenuItem_T.AVAILABILITY.AVAILABLE, "Hot Tacos", "Hot Tacos", MenuItem_T.CATEGORIES.SET_MEAL);
         menuDBHelper.addToDatabase(menuItem);
@@ -92,6 +94,9 @@ public class Main {
         menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
 
+        branchDBHelper.addToDatabase(branch);
+
+        branch = new Branch_T("Jurong City Point");
         branchDBHelper.addToDatabase(branch);
     }
 
