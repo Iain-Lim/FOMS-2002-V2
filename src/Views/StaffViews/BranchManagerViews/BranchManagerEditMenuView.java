@@ -17,7 +17,7 @@ public class BranchManagerEditMenuView extends UIMenuView {
         };
         this.subViews = new UIView[] {
                 new BranchManagerAddMenuItemView(),
-                null,
+                new BranchManagerRemoveMenuItemView(),
                 null,
                 new MenuDisplayView(true),
         };

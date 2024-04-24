@@ -13,6 +13,23 @@ public class Order_T implements IDatabaseItem_T {
     private Timestamp ts;
     private ArrayList<MenuItem_T> menuItems;
     private ArrayList<Integer> menuItemsQuantity;
+    private OrderStatus orderStatus;
+
+    public ArrayList<Integer> getMenuItemsQuantity() {
+        return menuItemsQuantity;
+    }
+
+    public void setMenuItemsQuantity(ArrayList<Integer> menuItemsQuantity) {
+        this.menuItemsQuantity = menuItemsQuantity;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 
     public Order_T() { }
 

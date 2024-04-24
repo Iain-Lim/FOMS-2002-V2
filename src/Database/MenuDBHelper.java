@@ -1,5 +1,6 @@
 package Database;
 
+import Database.DataStructs.Branch_T;
 import Database.DataStructs.MenuItem_T;
 
 public class MenuDBHelper extends DatabaseHelper {
@@ -16,6 +17,21 @@ public class MenuDBHelper extends DatabaseHelper {
             }
         }
         return false;
+    }
+
+    public int idxInDatabase_itemUUID(MenuItem_T menuItemPartial, boolean getFirst) {
+        int idx = -1;
+        MenuItem_T itemTemp;
+        for (int i = 0; i < this.databaseObject.size(); i++) {
+            itemTemp = (MenuItem_T) this.databaseObject.get(i);
+            if (menuItemPartial.getMenuItemUUID().equals(itemTemp.getMenuItemUUID())) {
+                idx = i;
+                if (getFirst) {
+                    return idx;
+                }
+            }
+        }
+        return idx;
     }
 
     public boolean addToDatabase(MenuItem_T menuItemFull) {

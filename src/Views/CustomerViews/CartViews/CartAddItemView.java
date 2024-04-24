@@ -32,7 +32,6 @@ public class CartAddItemView extends UIQueryView {
 
 
 
-
 //
 //        Order_T orderPartialT = new Order_T();
 //        orderPartialT.setOrderId(UUID.nameUUIDFromBytes(orderId.getBytes()));
