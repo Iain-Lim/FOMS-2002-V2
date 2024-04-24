@@ -12,11 +12,11 @@ public enum PaymentType {
             case CREDIT_CARD:
                 return "Credit Card";
             case DEBIT_CARD:
-                return "Credit Card";
+                return "Debit Card";
             case QR:
-                return "Credit Card";
+                return "QR Code";
             case OTHERS:
-                return "Credit Card";
+                return "Others";
             default:
                 return null;
         }
