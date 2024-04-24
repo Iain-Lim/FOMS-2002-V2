@@ -85,13 +85,13 @@ public class OrderPayMethodView extends UIQueryView{
         ViewStatus status;
         switch(paymentMethod.getPaymentType()){
             case PaymentType.CREDIT_CARD:
-                status = new CreditType().showAndQuery();
+                status = new CreditTypeView().showAndQuery();
                 break;
             case PaymentType.DEBIT_CARD:
-                status = new DebitType().showAndQuery();
+                status = new DebitTypeView().showAndQuery();
                 break;
             case PaymentType.QR:
-                status = new QRType().showAndQuery();
+                status = new QRTypeView().showAndQuery();
                 break;
             default:
                 status = ViewStatus.ERROR;

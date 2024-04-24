@@ -4,14 +4,15 @@ import Views.UIQueryView;
 import Main.SharedResources;
 import java.util.*;
 
-/* Specific Payment Method */
-public class QRType extends UIQueryView {
+/* Specific Payment Type */
+public class DebitTypeView extends UIQueryView {
 
     //private final paymentDBHelper;
-
+    private int cardNumber;
+    private int cvcCode;
     private int success;
     
-    public QRType() {
+    public DebitTypeView() {
         this.myViewName = this.getClass().getCanonicalName();
         //paymentDBHelper = SharedResources.getPaymentDatabaseHelper();
     }
@@ -20,19 +21,21 @@ public class QRType extends UIQueryView {
     public void query() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("---QR CODE PAYMENT---");
+        System.out.println("---DEBIT CARD PAYMENT---");
 
-        System.out.println("Scan the QR Code");
-        System.out.println("10101010101010101");
-        System.out.println("01010010101010101");
-        System.out.println("Press <Enter> when complete");
+        System.out.println("cardNumber: ");
+        cardNumber = Integer.parseInt(sc.nextLine());
 
-        sc.nextLine();
+        System.out.println("cvcCode: ");
+        cvcCode = Integer.parseInt(sc.nextLine());
+
+        System.out.println("Success? 1 for success: ");
+        success = Integer.parseInt(sc.nextLine());
     }
 
     @Override
     public ViewStatus handleQuery() {
-        if (true) {
+        if (success == 1) {
             System.out.println("Payment Success!");
             return ViewStatus.SUCCESS_AND_GO_BACK;
         }
