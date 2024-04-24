@@ -36,7 +36,7 @@ public class UIMenuWithExtraView extends UIMenuView {
         if (this.subViews == null || this.myExtraSubViews == null) return false;
 
         return this.subViews.length >= 1 &&
-                (this.user_request - 1) <= (this.subViews.length + this.myExtraSubViews.length - 2);
+                (this.user_request - 1) <= (this.subViews.length + this.myExtraSubViews.length - 1);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class UIMenuWithExtraView extends UIMenuView {
         int requestedViewIdx = this.user_request-1;
 
         if (this.subViews.length-1 < requestedViewIdx) {
-            requestedViewIdx -= this.subViews.length-1;
+            requestedViewIdx -= this.subViews.length;
             subView = this.myExtraSubViews[requestedViewIdx];
         } else {
             subView= this.subViews[requestedViewIdx];

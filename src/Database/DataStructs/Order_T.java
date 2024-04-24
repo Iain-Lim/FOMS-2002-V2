@@ -10,6 +10,7 @@ public class Order_T implements IDatabaseItem_T {
     private UUID customerId;
     private Timestamp ts;
     private ArrayList<MenuItem_T> menuItems;
+    private ArrayList<Integer> menuItemsQuantity;
 
     public Order_T() { }
 
