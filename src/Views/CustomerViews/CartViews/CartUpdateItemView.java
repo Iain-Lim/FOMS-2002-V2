@@ -1,6 +1,7 @@
 package Views.CustomerViews.CartViews;
 
 import Database.DataStructs.Order_T;
+import Main.SharedResources;
 import Views.UIQueryView;
 import Views.UIView;
 
@@ -16,6 +17,13 @@ public class CartUpdateItemView extends UIQueryView {
     public void show() {
         UIView cartView = new CartDisplayView();
         cartView.showAndQuery();
+    }
+
+    @Override
+    public ViewStatus showAndQuery() {
+        if (SharedResources.getCurrentCustomerOrder().isEmpty()) return ViewStatus.FAIL_AND_GO_BACK;
+
+        return super.showAndQuery();
     }
 
     @Override

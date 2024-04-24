@@ -15,6 +15,34 @@ public class Order_T implements IDatabaseItem_T {
     private ArrayList<Integer> menuItemsQuantity;
     private OrderStatus orderStatus;
 
+    public boolean isEmpty() {
+        return (this.menuItems.isEmpty());
+    }
+
+    public Order_T() {
+        this.orderId = UUID.randomUUID();
+        this.ts = new Timestamp(System.currentTimeMillis());
+        this.menuItems = new ArrayList<>();
+        this.menuItemsQuantity = new ArrayList<>();
+    }
+
+    public boolean addItemToOrder(MenuItem_T menuItemT, int quantity) {
+
+        MenuItem_T itemTemp;
+        for (int i = 0; i < this.menuItems.size(); i++) {
+            itemTemp = (MenuItem_T) this.menuItems.get(i);
+            if (menuItemT.getMenuItemUUID().equals(itemTemp.getMenuItemUUID())) {
+                System.out.println("item already in cart");
+                return false;
+            }
+        }
+
+        this.menuItems.add(menuItemT);
+        this.menuItemsQuantity.add(quantity);
+
+        return true;
+    }
+
     public ArrayList<Integer> getMenuItemsQuantity() {
         return menuItemsQuantity;
     }
@@ -30,8 +58,6 @@ public class Order_T implements IDatabaseItem_T {
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
-
-    public Order_T() { }
 
     public UUID getOrderId() {
         return orderId;
@@ -81,12 +107,53 @@ public class Order_T implements IDatabaseItem_T {
                 ", customerId=" + customerId +
                 ", ts=" + ts +
                 ", menuItems=" + menuItems +
+                ", menuItemsQuantity=" + menuItemsQuantity +
+                ", orderStatus=" + orderStatus +
                 '}';
     }
 
     @Override
     public String prettyPrint() {
         return this.toString();
+    }
+
+    public String printReceipt() {
+        String ret = "";
+        ret += "Order ID: " + this.orderId.toString() + "\n";
+        for (int i = 0; i < menuItems.size(); i++) {
+            ret += (
+                    (i+1) +
+                            ": " + menuItems.get(i).getName() +
+                            "\t -> " + menuItemsQuantity.get(i) +
+                            " * $" + menuItems.get(i).getPrice() +
+                            "\n"
+            );
+        }
+
+        if (menuItems.size() < 1) {
+            ret += "Your Cart Is Empty...";
+        }
+
+        return ret;
+    }
+
+    public String printOrder() {
+        String ret = "";
+        for (int i = 0; i < menuItems.size(); i++) {
+            ret += (
+                (i+1) +
+                ": " + menuItems.get(i).getName() +
+                "\t -> " + menuItemsQuantity.get(i) +
+                " * $" + menuItems.get(i).getPrice() +
+                "\n"
+            );
+        }
+
+        if (menuItems.size() < 1) {
+            ret += "Your Cart Is Empty...";
+        }
+
+        return ret;
     }
 
     @Override

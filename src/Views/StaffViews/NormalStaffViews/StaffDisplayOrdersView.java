@@ -3,6 +3,7 @@ package Views.StaffViews.NormalStaffViews;
 import Backend.Branch;
 import Backend.NormalStaff;
 import Backend.Staff;
+import Main.SharedResources;
 import Views.UIView;
 
 public class StaffDisplayOrdersView extends UIView {
@@ -23,7 +24,11 @@ public class StaffDisplayOrdersView extends UIView {
 
     @Override
     public void show() {
-        System.out.println("Show Orders");
+        String ret;
+        ret = SharedResources.getOrderDBHelper().printIfBranch(
+                SharedResources.getCurrentStaffBranchT()
+                );
+        System.out.println(ret);
     }
 
     @Override
