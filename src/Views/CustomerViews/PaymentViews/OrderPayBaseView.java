@@ -5,6 +5,8 @@ import Views.UIView;
 
 import java.util.*;
 
+import Database.DataStructs.PaymentType;
+
 
 public class OrderPayBaseView extends UIMenuView{
 
@@ -14,7 +16,7 @@ public class OrderPayBaseView extends UIMenuView{
         this.subViews = new UIView[] {
                 new creditType(),                
                 new debitType(),
-                new QRType()
+                new QRType(PaymentType.CREDIT_CARD)
         };
 
         this.myViewOptions = new String[] {
