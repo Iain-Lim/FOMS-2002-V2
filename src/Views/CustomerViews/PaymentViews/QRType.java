@@ -4,16 +4,14 @@ import Views.UIQueryView;
 import Main.SharedResources;
 import java.util.*;
 
-//TODO change name??
 /* Specific Payment Method */
-public class PaylahPayment extends UIQueryView {
+public class QRType extends UIQueryView {
 
     //private final paymentDBHelper;
-    private int cardNumber;
-    private int cvcCode;
+
     private int success;
     
-    public PaylahPayment() {
+    public QRType() {
         this.myViewName = this.getClass().getCanonicalName();
         //paymentDBHelper = SharedResources.getPaymentDatabaseHelper();
     }
@@ -22,19 +20,19 @@ public class PaylahPayment extends UIQueryView {
     public void query() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("cardNumber: ");
-        cardNumber = Integer.parseInt(sc.nextLine());
+        System.out.println("---QR CODE PAYMENT---");
 
-        System.out.println("Password: ");
-        cvcCode = Integer.parseInt(sc.nextLine());
+        System.out.println("Scan the QR Code");
+        System.out.println("10101010101010101");
+        System.out.println("01010010101010101");
+        System.out.println("Press <Enter> when complete");
 
-        System.out.println("Success? 1 for success: ");
-        success = Integer.parseInt(sc.nextLine());
+        sc.nextLine();
     }
 
     @Override
     public ViewStatus handleQuery() {
-        if (success == 1) {
+        if (true) {
             System.out.println("Payment Success!");
             return ViewStatus.SUCCESS_AND_GO_BACK;
         }

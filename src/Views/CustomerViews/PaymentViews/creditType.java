@@ -4,16 +4,15 @@ import Views.UIQueryView;
 import Main.SharedResources;
 import java.util.*;
 
-//TODO change name??
-/* Specific Payment Method */
-public class MastercardPayment extends UIQueryView {
+/* Specific Payment Type */
+public class creditType extends UIQueryView {
 
     //private final paymentDBHelper;
     private int cardNumber;
     private int cvcCode;
     private int success;
     
-    public MastercardPayment() {
+    public creditType() {
         this.myViewName = this.getClass().getCanonicalName();
         //paymentDBHelper = SharedResources.getPaymentDatabaseHelper();
     }
@@ -21,6 +20,8 @@ public class MastercardPayment extends UIQueryView {
     @Override
     public void query() {
         Scanner sc = new Scanner(System.in);
+
+        System.out.println("---CREDIT CARD PAYMENT---");
 
         System.out.println("cardNumber: ");
         cardNumber = Integer.parseInt(sc.nextLine());
