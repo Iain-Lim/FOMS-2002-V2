@@ -4,22 +4,38 @@ import Views.UIQueryView;
 import Main.SharedResources;
 import java.util.*;
 
+import Database.PaymentMethodDBHelper;
+import Database.DataStructs.*;
+
 /* Specific Payment Type */
 public class creditType extends UIQueryView {
 
-    //private final paymentDBHelper;
+    private final PaymentMethodDBHelper DBHelper;
     private int cardNumber;
     private int cvcCode;
     private int success;
     
     public creditType() {
         this.myViewName = this.getClass().getCanonicalName();
-        //paymentDBHelper = SharedResources.getPaymentDatabaseHelper();
+        DBHelper = SharedResources.getPaymentMethodDBHelper();
     }
 
     @Override
     public void query() {
         Scanner sc = new Scanner(System.in);
+
+        int 
+
+        ArrayList<IDatabaseItem_T> paymentArray = DBHelper.getAllFromDatabase();
+        for (int i=0; i<paymentArray.size(); i++){
+            PaymentMethod_T temp = (PaymentMethod_T) paymentArray.get(i);
+            if (temp.getPaymentType() == PaymentType.CREDIT_CARD){
+
+            }
+        }
+
+
+
 
         System.out.println("---CREDIT CARD PAYMENT---");
 
