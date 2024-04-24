@@ -7,6 +7,7 @@ import Database.DataStructs.Branch_T;
 import Database.DataStructs.User_T;
 import Database.MenuDBHelper;
 import Database.OrderDBHelper;
+import Database.PaymentMethodDBHelper;
 import Database.UserDBHelper;
 
 public class SharedResources {
@@ -14,6 +15,7 @@ public class SharedResources {
     private static OrderDBHelper orderDBHelper;
     private static BranchDBHelper branchDBHelper;
     private static MenuDBHelper menuDBHelper;
+    private static PaymentMethodDBHelper paymentMethodDBHelper;
     private static Staff currStaff;
     private static User_T currentUser;
     private static Branch_T currentBranch;
@@ -42,6 +44,12 @@ public class SharedResources {
     }
     public static void setMenuDBHelper(MenuDBHelper menuDBHelper) {
         SharedResources.menuDBHelper = menuDBHelper;
+    }
+    public static PaymentMethodDBHelper getPaymentMethodDBHelper() {
+        return paymentMethodDBHelper;
+    }
+    public static void setPaymentMethodDBHelper(PaymentMethodDBHelper paymentMethodDBHelper) {
+        SharedResources.paymentMethodDBHelper = paymentMethodDBHelper;
     }
     public static OrderDBHelper getOrderDBHelper() {
         return orderDBHelper;
