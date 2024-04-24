@@ -14,7 +14,7 @@ public class AccountChangePasswordView extends UIQueryView {
 
     public AccountChangePasswordView() {
        this.myViewName = this.getClass().getCanonicalName();
-        currUser = SharedResources.getCurrentUser();
+        currUser = SharedResources.getCurrentUserT();
     }
 
     @Override
@@ -35,10 +35,10 @@ public class AccountChangePasswordView extends UIQueryView {
             return ViewStatus.FAIL_AND_GO_BACK;
         }
 
-        currUser = SharedResources.getCurrentUser();
+        currUser = SharedResources.getCurrentUserT();
 
 //        not logged in
-        if (currUser == null || currUser.getStaffType() == StaffType.NA) {
+        if (currUser == null) {
             SharedResources.setErrorMessage("Change Password without being logged in");
             return ViewStatus.ERROR;
         }
@@ -54,7 +54,7 @@ public class AccountChangePasswordView extends UIQueryView {
 
         System.out.println("Password successfully changed, please log in again...");
         SharedResources.getUserDatabaseHelper().updateUserPassword(userPartial);
-        SharedResources.setCurrentUser(null);
+        SharedResources.setCurrentUserT(null);
 
         SharedResources.setJumpToView("Views.Main.MainView");
         return ViewStatus.JUMP_TO;

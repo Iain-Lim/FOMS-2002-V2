@@ -1,10 +1,8 @@
 package Backend;
 
+import Views.StaffViews.BranchManagerViews.BranchManagerAmendMenuView;
+import Views.StaffViews.BranchManagerViews.BranchManagerDisplayStaffView;
 import Views.UIView;
-
-import java.util.Arrays;
-
-import static java.lang.System.arraycopy;
 
 public class BranchManagerStaff extends NormalStaff implements IBranchManager {
     @Override
@@ -25,8 +23,8 @@ public class BranchManagerStaff extends NormalStaff implements IBranchManager {
     @Override
     public UIView[] getSubViews() {
         UIView[] mySubViews = new UIView[] {
-                null,
-                null
+                new BranchManagerDisplayStaffView(),
+                new BranchManagerAmendMenuView(),
         };
 
         int totalLength = mySubViews.length + super.getSubViews().length;

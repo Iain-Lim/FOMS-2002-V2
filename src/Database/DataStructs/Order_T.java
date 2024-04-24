@@ -1,5 +1,7 @@
 package Database.DataStructs;
 
+import Main.SharedResources;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -68,5 +70,10 @@ public class Order_T implements IDatabaseItem_T {
     @Override
     public String prettyPrint() {
         return this.toString();
+    }
+
+    @Override
+    public boolean addMeToDB() {
+        return SharedResources.getOrderDBHelper().addToDatabase(this);
     }
 }

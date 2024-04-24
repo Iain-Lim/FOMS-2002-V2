@@ -1,6 +1,6 @@
-package Views.CustomerViews;
+package Views.CustomerViews.CartViews;
 
-import Views.MenuViews.MenuDisplayMenuView;
+import Views.MenuViews.MenuDisplayView;
 import Views.UIMenuView;
 import Views.UIView;
 
@@ -16,12 +16,12 @@ public class CartBaseView extends UIMenuView {
                 "Pay",
         };
         this.subViews = new UIView[] {
-                new MenuDisplayMenuView(),
-                null,
-                null,
-                null,
-                null,
-                null
+                new MenuDisplayView(),
+                new CartDisplayView(),
+                new CartAddItemView(),
+                new CartRemoveItemView(),
+                new CartUpdateItemView(),
+                new CartCheckoutView()
         };
     }
 }

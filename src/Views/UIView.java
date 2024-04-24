@@ -15,7 +15,7 @@ public class UIView implements IUIDisplay{
     protected String myViewName;
 
     public UIView() {
-        myViewName = "Base Class Views.UIView";
+        this.myViewName = this.getClass().getCanonicalName();
     }
 
     public void show() {

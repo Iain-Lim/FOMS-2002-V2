@@ -33,7 +33,7 @@ public class StaffBaseView extends UIMenuWithExtraView {
 
     @Override
     public ViewStatus showAndQuery() {
-        currUser = SharedResources.getCurrentUser();
+        currUser = SharedResources.getCurrentUserT();
 
         if (currUser == null ||
                 currUser.getStaffType() == StaffType.NORMAL_STAFF ||
@@ -45,7 +45,7 @@ public class StaffBaseView extends UIMenuWithExtraView {
             viewStatus = login.showAndQuery();
 
             if (viewStatus == ViewStatus.SUCCESS_AND_GO_BACK) {
-                currUser = SharedResources.getCurrentUser();
+                currUser = SharedResources.getCurrentUserT();
 
             } else if (viewStatus == ViewStatus.FAIL_AND_GO_BACK) {
 //                failed to log in
@@ -53,7 +53,7 @@ public class StaffBaseView extends UIMenuWithExtraView {
             }
         }
 
-        this.staffObj = SharedResources.getCurrStaff();
+        this.staffObj = SharedResources.getCurrStaffB();
 
         if (this.staffObj != null) {
             this.myExtraViewOptions = this.staffObj.getViewOptions();

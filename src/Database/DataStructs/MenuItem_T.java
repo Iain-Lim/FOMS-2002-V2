@@ -7,6 +7,8 @@
 
 package Database.DataStructs;
 
+import Main.SharedResources;
+
 import java.util.UUID;
 
 public class MenuItem_T implements IDatabaseItem_T {
@@ -38,8 +40,28 @@ public class MenuItem_T implements IDatabaseItem_T {
     private String description;
     private String name;
     private CATEGORIES category;
+    private UUID branchUUID;
 
     public MenuItem_T() {}
+
+    public MenuItem_T(MenuItem_T obj) {
+        this.menuItemUUID = obj.menuItemUUID;
+        this.price = obj.price;
+        this.availability = obj.availability;
+        this.description = obj.description;
+        this.name = obj.name;
+        this.category = obj.category;
+        this.branchUUID = obj.branchUUID;
+    }
+
+    public MenuItem_T(float price, AVAILABILITY availability, String description, String name, CATEGORIES category, UUID branchUUID) {
+        this.price = price;
+        this.availability = availability;
+        this.description = description;
+        this.name = name;
+        this.category = category;
+        this.branchUUID = branchUUID;
+    }
 
     public MenuItem_T(float price, AVAILABILITY availability, String description, String name, CATEGORIES category) {
         this.menuItemUUID = UUID.randomUUID();
@@ -57,6 +79,22 @@ public class MenuItem_T implements IDatabaseItem_T {
         this.description = description;
         this.name = name;
         this.category = category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UUID getBranchUUID() {
+        return branchUUID;
+    }
+
+    public void setBranchUUID(UUID branchUUID) {
+        this.branchUUID = branchUUID;
     }
 
     public UUID getMenuItemUUID() {
@@ -102,12 +140,12 @@ public class MenuItem_T implements IDatabaseItem_T {
     @Override
     public String toString() {
         return "MenuItem_T{" +
-                "menuItemUUID=" + menuItemUUID +
                 ", price=" + price +
-                ", availability=" + availability +
+                ", availability=" + availability.toString() +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
                 ", category=" + category +
+                ", branchUUID=" + branchUUID +
                 '}';
     }
 
@@ -131,5 +169,10 @@ public class MenuItem_T implements IDatabaseItem_T {
 //                ", availability=" + availability +
 //                ", category=" + category + '\'' +
 //                '}';
+    }
+
+    @Override
+    public boolean addMeToDB() {
+        return SharedResources.getMenuDBHelper().addToDatabase(this);
     }
 }

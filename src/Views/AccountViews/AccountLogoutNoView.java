@@ -11,7 +11,7 @@ public class AccountLogoutNoView extends UIView {
     public ViewStatus showAndQuery() {
 
 //        log out
-        SharedResources.setCurrentUser(null);
+        SharedResources.setCurrentUserT(null);
 
         SharedResources.setJumpToView("Views.Main.MainView");
         return ViewStatus.JUMP_TO;

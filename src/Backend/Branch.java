@@ -7,22 +7,26 @@ import Main.SharedResources;
 import java.util.ArrayList;
 
 public class Branch {
-    private static Branch_T branchData;
+    private Branch_T branchT;
     private Staff[] myStaff;
-    private static ArrayList<MenuItem_T> branchMenu;
+    private ArrayList<MenuItem_T> branchMenu;
 
-    public boolean addToMenu(MenuItem_T menuItemT) {
-        boolean addedToMenu;
-        addedToMenu = SharedResources.getMenuDBHelper().addToDatabase(menuItemT);
-        if (addedToMenu) {
-            return branchData.addMenuItem(menuItemT);
-        }
-        return false;
+    public Branch(Branch_T branchT) {
+        this.branchT = branchT;
     }
 
-    public static void printMenu() {
-        branchData = SharedResources.getCurrentBranch();
-        branchMenu = branchData.getMenuItems();
+//    public boolean addToMenu(MenuItem_T menuItemT) {
+//        boolean addedToMenu;
+//        addedToMenu = SharedResources.getMenuDBHelper().addToDatabase(menuItemT);
+//        if (addedToMenu) {
+//            return branchT.addMenuItem(menuItemT);
+//        }
+//        return false;
+//    }
+
+    public void printMenu() {
+        branchT = SharedResources.getCurrentBranchT();
+        branchMenu = branchT.getMenuItems();
         for (int i = 0; i < branchMenu.size(); i++) {
             System.out.println( (i+1) + ": " + branchMenu.get(i).prettyPrint());
         }

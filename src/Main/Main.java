@@ -1,6 +1,5 @@
 package Main;
 
-import Backend.Branch;
 import Database.BranchDBHelper;
 import Database.DataStructs.*;
 import Database.DataStructs.Branch_T;
@@ -44,57 +43,57 @@ public class Main {
     }
 
     public static void showAllDatabases() {
-        System.out.println("User database: " + userDatabaseHelper.getAllFromDatabase().size());
-        userDatabaseHelper.printAllInDatabase(false);
+        System.out.println("User database: " + SharedResources.getUserDatabaseHelper().getAllFromDatabase().size());
+        SharedResources.getUserDatabaseHelper().printAllInDatabase(false);
 
-        System.out.println("Menu database: " + menuDBHelper.getAllFromDatabase().size());
-        menuDBHelper.printAllInDatabase(false);
+        System.out.println("Menu database: " + SharedResources.getMenuDBHelper().getAllFromDatabase().size());
+        SharedResources.getMenuDBHelper().printAllInDatabase(false);
 
-        System.out.println("Branch database: " + branchDBHelper.getAllFromDatabase().size());
-        branchDBHelper.printAllInDatabase(false);
+        System.out.println("Branch database: " + SharedResources.getBranchDBHelper().getAllFromDatabase().size());
+        SharedResources.getBranchDBHelper().printAllInDatabase(false);
 
-        System.out.println("Order database: " + orderDBHelper.getAllFromDatabase().size());
-        orderDBHelper.printAllInDatabase(false);
+        System.out.println("Order database: " + SharedResources.getOrderDBHelper().getAllFromDatabase().size());
+        SharedResources.getOrderDBHelper().printAllInDatabase(false);
     }
 
     public static void debug_addStubData() {
         User_T user;
         String username;
-        for (int i = 0; i < 5; i++) {
-            username = "user_" + i;
+        for (int i = 0; i < 2; i++) {
+            username = "user" + i;
             user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
-            userDatabaseHelper.addToDatabase(user);
+            user.addMeToDB();
         }
-        for (int i = 5; i < 10; i++) {
-            username = "user_" + i;
+        for (int i = 2; i < 5; i++) {
+            username = "user" + i;
             user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
-            userDatabaseHelper.addToDatabase(user);
+            user.addMeToDB();
         }
 
         username = "admin";
         user = new User_T(username, "admin", true, StaffType.ADMIN);
-        userDatabaseHelper.addToDatabase(user);
+        user.addMeToDB();
 
         Branch_T branch;
-        branch = new Branch_T("Changi City Point");
-
         MenuItem_T menuItem;
+
+        branch = new Branch_T("Changi City Point");
         menuItem = new MenuItem_T(10.10f, MenuItem_T.AVAILABILITY.NOT_AVAILABLE, "Hot Tacos", "Hot Tacos", MenuItem_T.CATEGORIES.SET_MEAL);
-        menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
-
         menuItem = new MenuItem_T(2.10f, MenuItem_T.AVAILABILITY.AVAILABLE, "Ice Milo", "Ice Milo", MenuItem_T.CATEGORIES.DRINK);
-        menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
-
         menuItem = new MenuItem_T(0.90f, MenuItem_T.AVAILABILITY.AVAILABLE, "Cheese Fries", "Cheese Fries", MenuItem_T.CATEGORIES.SIDE);
-        menuDBHelper.addToDatabase(menuItem);
         branch.addMenuItem(menuItem);
-
-        branchDBHelper.addToDatabase(branch);
+        branch.addMeToDB();
 
         branch = new Branch_T("Jurong Point");
-        branchDBHelper.addToDatabase(branch);
+        menuItem = new MenuItem_T(11.10f, MenuItem_T.AVAILABILITY.NOT_AVAILABLE, "Cold Tacos", "Cold Tacos", MenuItem_T.CATEGORIES.SET_MEAL);
+        branch.addMenuItem(menuItem);
+        menuItem = new MenuItem_T(2.50f, MenuItem_T.AVAILABILITY.AVAILABLE, "Ice Teh", "Ice Teh", MenuItem_T.CATEGORIES.DRINK);
+        branch.addMenuItem(menuItem);
+        menuItem = new MenuItem_T(11.90f, MenuItem_T.AVAILABILITY.AVAILABLE, "Curly Fries", "Curly Fries", MenuItem_T.CATEGORIES.SIDE);
+        branch.addMenuItem(menuItem);
+        branch.addMeToDB();
     }
 
     private static void open_databases() {

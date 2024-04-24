@@ -14,75 +14,90 @@ public class SharedResources {
     private static OrderDBHelper orderDBHelper;
     private static BranchDBHelper branchDBHelper;
     private static MenuDBHelper menuDBHelper;
-    private static Staff currStaff;
-    private static User_T currentUser;
-    private static Branch_T currentBranch;
-    private static Branch currentBeBranch;
+    private static Staff currStaffB;
+    private static User_T currentUserT;
+    private static Branch_T currentBranchT;
+    private static Branch currentBranchB;
     private static String jumpToView = "";
     private static String errorMessage = "";
 
-    public static Branch getCurrentBeBranch() {
-        return currentBeBranch;
+    public static UserDBHelper getUserDatabaseHelper() {
+        return userDatabaseHelper;
     }
 
-    public static void setCurrentBeBranch(Branch currentBeBranch) {
-        SharedResources.currentBeBranch = currentBeBranch;
+    public static void setUserDatabaseHelper(UserDBHelper userDatabaseHelper) {
+        SharedResources.userDatabaseHelper = userDatabaseHelper;
     }
 
-    public static Branch_T getCurrentBranch() {
-        return currentBranch;
+    public static OrderDBHelper getOrderDBHelper() {
+        return orderDBHelper;
     }
 
-    public static void setCurrentBranch(Branch_T currentBranch) {
-        SharedResources.currentBranch = currentBranch;
+    public static void setOrderDBHelper(OrderDBHelper orderDBHelper) {
+        SharedResources.orderDBHelper = orderDBHelper;
+    }
+
+    public static BranchDBHelper getBranchDBHelper() {
+        return branchDBHelper;
+    }
+
+    public static void setBranchDBHelper(BranchDBHelper branchDBHelper) {
+        SharedResources.branchDBHelper = branchDBHelper;
     }
 
     public static MenuDBHelper getMenuDBHelper() {
         return menuDBHelper;
     }
+
     public static void setMenuDBHelper(MenuDBHelper menuDBHelper) {
         SharedResources.menuDBHelper = menuDBHelper;
     }
-    public static OrderDBHelper getOrderDBHelper() {
-        return orderDBHelper;
+
+    public static Staff getCurrStaffB() {
+        return currStaffB;
     }
-    public static void setOrderDBHelper(OrderDBHelper orderDBHelper) {
-        SharedResources.orderDBHelper = orderDBHelper;
+
+    public static void setCurrStaffB(Staff currStaffB) {
+        SharedResources.currStaffB = currStaffB;
     }
-    public static BranchDBHelper getBranchDBHelper() {
-        return branchDBHelper;
+
+    public static User_T getCurrentUserT() {
+        return currentUserT;
     }
-    public static void setBranchDBHelper(BranchDBHelper branchDBHelper) {
-        SharedResources.branchDBHelper = branchDBHelper;
+
+    public static void setCurrentUserT(User_T currentUserT) {
+        SharedResources.currentUserT = currentUserT;
     }
-    public static Staff getCurrStaff() {
-        return currStaff;
+
+    public static Branch_T getCurrentBranchT() {
+        return currentBranchT;
     }
-    public static void setCurrStaff(Staff currStaff) {
-        SharedResources.currStaff = currStaff;
+
+    public static void setCurrentBranchT(Branch_T currentBranchT) {
+        SharedResources.currentBranchT = currentBranchT;
     }
-    public static String getErrorMessage() {
-        return errorMessage;
+
+    public static Branch getCurrentBranchB() {
+        return currentBranchB;
     }
-    public static void setErrorMessage(String errorMessage) {
-        SharedResources.errorMessage = errorMessage;
+
+    public static void setCurrentBranchB(Branch currentBranchB) {
+        SharedResources.currentBranchB = currentBranchB;
     }
+
     public static String getJumpToView() {
         return jumpToView;
     }
+
     public static void setJumpToView(String jumpToView) {
         SharedResources.jumpToView = jumpToView;
     }
-    public static UserDBHelper getUserDatabaseHelper() {
-        return userDatabaseHelper;
+
+    public static String getErrorMessage() {
+        return errorMessage;
     }
-    public static void setUserDatabaseHelper(UserDBHelper userDatabaseHelper) {
-        SharedResources.userDatabaseHelper = userDatabaseHelper;
-    }
-    public static User_T getCurrentUser() {
-        return currentUser;
-    }
-    public static void setCurrentUser(User_T currentUser) {
-        SharedResources.currentUser = currentUser;
+
+    public static void setErrorMessage(String errorMessage) {
+        SharedResources.errorMessage = errorMessage;
     }
 }

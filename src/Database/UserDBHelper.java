@@ -22,6 +22,21 @@ public class UserDBHelper extends DatabaseHelper {
         return idx;
     }
 
+    public int idxInDatabase_uuid(User_T userPartial, boolean getFirst) {
+        int idx = -1;
+        User_T userTemp;
+        for (int i = 0; i < this.databaseObject.size(); i++) {
+            userTemp = (User_T) this.databaseObject.get(i);
+            if (userPartial.getUserUUID().equals(userTemp.getUserUUID())) {
+                idx = i;
+                if (getFirst) {
+                    return idx;
+                }
+            }
+        }
+        return idx;
+    }
+
     public boolean isInDatabase(User_T userPartial) {
         User_T userTemp;
         for (int i = 0; i < this.databaseObject.size(); i++) {

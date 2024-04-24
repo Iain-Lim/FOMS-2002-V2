@@ -128,10 +128,12 @@ public class UIMenuView extends UIView {
                 case ViewStatus.GO_BACK -> {
                     return ViewStatus.OK;
                 }
+//                note that there is a bug that requires the JumpTo to be target + 1 level after,
+//                else it will go to MainView
                 case ViewStatus.JUMP_TO -> {
                     if (SharedResources.getJumpToView().isEmpty()) {
                         System.out.println("JumpTo not specified");
-                        return ViewStatus.ERROR;
+                        return ViewStatus.OK;
                     }
 
                     if (SharedResources.getJumpToView().equals(this.myViewName)) {

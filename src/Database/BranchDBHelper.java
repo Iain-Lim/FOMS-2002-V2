@@ -13,7 +13,7 @@ public class BranchDBHelper extends DatabaseHelper {
         for (int i = 0; i < this.databaseObject.size(); i++) {
             branchTemp = (Branch_T) this.databaseObject.get(i);
             if (
-                    branchPartial.getBranchId().equals(branchTemp.getBranchId()) ||
+                    branchPartial.getBranchUUID() == (branchTemp.getBranchUUID()) ||
                     branchPartial.getBranchName().equals(branchTemp.getBranchName())
             ) {
                 return true;
@@ -24,13 +24,9 @@ public class BranchDBHelper extends DatabaseHelper {
 
     public boolean addToDatabase(Branch_T branchFull) {
         if (this.isInDatabase(branchFull)) {
-//            username exists
+//            branch exists
             return false;
         }
         return this.databaseObject.add(branchFull);
-    }
-
-    public boolean addMenuItemToBranchDatabase(Branch_T branchPartial, MenuItem_T menuItem) {
-        return false;
     }
 }

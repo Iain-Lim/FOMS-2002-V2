@@ -2,6 +2,7 @@ package Views.CustomerViews;
 
 import Database.DataStructs.Branch_T;
 import Main.SharedResources;
+import Views.CustomerViews.CartViews.CartBaseView;
 import Views.UIMenuView;
 import Views.UIQueryView;
 import Views.UIView;
@@ -19,14 +20,14 @@ public class CustomerBaseView extends UIMenuView {
         this.subViews = new UIView[] {
                 new CustomerChooseBranchView(),
                 new CartBaseView(),
-                null,
-                new CustomerPickupOrderView()
+                new CustomerViewPreviousOrderView(false),
+                new CustomerViewPreviousOrderView(true),
         };
     }
 
     @Override
     public ViewStatus showAndQuery() {
-        currBranch = SharedResources.getCurrentBranch();
+        currBranch = SharedResources.getCurrentBranchT();
 
         if (currBranch == null) {
             ViewStatus viewStatus;
@@ -35,7 +36,7 @@ public class CustomerBaseView extends UIMenuView {
             viewStatus = chooseBranch.showAndQuery();
 
             if (viewStatus == ViewStatus.SUCCESS_AND_GO_BACK) {
-                currBranch = SharedResources.getCurrentBranch();
+                currBranch = SharedResources.getCurrentBranchT();
 
             } else if (viewStatus == ViewStatus.FAIL_AND_GO_BACK) {
                 return ViewStatus.FAIL_AND_GO_BACK;

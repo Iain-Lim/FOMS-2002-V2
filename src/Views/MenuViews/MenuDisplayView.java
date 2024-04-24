@@ -1,22 +1,21 @@
 package Views.MenuViews;
 
 import Backend.Branch;
-import Database.DataStructs.Branch_T;
 import Main.SharedResources;
 import Views.UIView;
 
-public class MenuDisplayMenuView extends UIView {
+public class MenuDisplayView extends UIView {
 
     private Branch branch;
 
-    public MenuDisplayMenuView() {
+    public MenuDisplayView() {
         this.myViewName = this.getClass().getCanonicalName();
-        branch = SharedResources.getCurrentBeBranch();
+        branch = SharedResources.getCurrentBranchB();
     }
 
     @Override
     public void show() {
-        branch = SharedResources.getCurrentBeBranch();
+        branch = SharedResources.getCurrentBranchB();
         if (branch != null) {
             this.branch.printMenu();
         }

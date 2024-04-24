@@ -9,10 +9,12 @@ public class AccountSettingsView extends UIMenuView {
         this.subViews = new UIView[] {
                 new AccountLogoutNoView(),
                 new AccountChangePasswordView(),
+                new AccountDisplayMyInfoView(),
         };
         this.myViewOptions = new String[] {
                 "Log Out",
-                "Change Password"
+                "Change Password",
+                "My Account Info"
         };
     }
 }

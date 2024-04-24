@@ -1,16 +1,16 @@
-package Views.StaffViews.BranchManagerViews;
+package Views.AccountViews;
 
-import Database.DataStructs.Branch_T;
 import Main.SharedResources;
 import Views.UIView;
 
-public class BMDisplayStaffView extends UIView {
-    public BMDisplayStaffView() {
+public class AccountDisplayMyInfoView extends UIView {
+    public AccountDisplayMyInfoView() {
         this.myViewName = this.getClass().getCanonicalName();
     }
 
     @Override
     public ViewStatus showAndQuery() {
+        System.out.println(SharedResources.getCurrentUserT().toString());
         return ViewStatus.OK;
     }
 }

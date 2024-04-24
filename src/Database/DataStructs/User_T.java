@@ -1,13 +1,25 @@
 package Database.DataStructs;
 
+import Main.SharedResources;
+
 import java.util.UUID;
 
 public class User_T implements IDatabaseItem_T {
-    private UUID userId;
+    private UUID userUUID;
     private String username;
     private String password;
     private boolean isStaff;
     private StaffType staffType;
+    private UUID branchUUID;
+    private int gender;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setStaffType(StaffType staffType) {
+        this.staffType = staffType;
+    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -15,6 +27,7 @@ public class User_T implements IDatabaseItem_T {
     public User_T() {}
     public User_T(String username) {
         this.username = username;
+        this.password = "password";
     }
 
     public User_T(String username, String password) {
@@ -23,7 +36,7 @@ public class User_T implements IDatabaseItem_T {
     }
 
     public User_T(UUID userId, String username, String password, boolean isStaff, StaffType staffType) {
-        this.userId = userId;
+        this.userUUID = userId;
         this.username = username;
         this.password = password;
         this.isStaff = isStaff;
@@ -31,7 +44,7 @@ public class User_T implements IDatabaseItem_T {
     }
 
     public User_T(String username, String password, boolean isStaff, StaffType staffType) {
-        this.userId = UUID.randomUUID();
+        this.userUUID = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.isStaff = isStaff;
@@ -39,13 +52,23 @@ public class User_T implements IDatabaseItem_T {
     }
 
     @Override
+    public boolean addMeToDB() {
+        return SharedResources.getUserDatabaseHelper().addToDatabase(this);
+    }
+
+    public boolean isInDB() {
+        return SharedResources.getUserDatabaseHelper().isInDatabase(this);
+    }
+
+    @Override
     public String toString() {
         return "User_T{" +
-                "userId=" + userId +
+                "userId=" + userUUID +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", isStaff=" + isStaff +
-                ", staffType=" + staffType +
+//                ", password='" + password + '\'' +
+                ", password=" + UUID.nameUUIDFromBytes(password.getBytes()) +
+                ", isStaff=" + isStaff  + '\'' +
+                ", staffType=" + staffType  + '\'' +
                 '}';
     }
 
@@ -56,8 +79,8 @@ public class User_T implements IDatabaseItem_T {
                 '}';
     }
 
-    public UUID getUserId() {
-        return userId;
+    public UUID getUserUUID() {
+        return userUUID;
     }
 
     public String getUsername() {
@@ -83,5 +106,4 @@ public class User_T implements IDatabaseItem_T {
     public void printUser() {
         System.out.println(">> " + this.getUsername() + ", " + this.getStaffType());
     }
-
 }

@@ -38,7 +38,7 @@ public class AccountLoginAsStaffView extends UIQueryView {
         User_T userVerified = userDBHelper.verifyLogin(userPartial);
 
         if (userVerified != null) {
-            SharedResources.setCurrentUser(userVerified);
+            SharedResources.setCurrentUserT(userVerified);
             setStaffObj();
 
             System.out.println("Logged in successfully");
@@ -50,7 +50,7 @@ public class AccountLoginAsStaffView extends UIQueryView {
     }
 
     private void setStaffObj() {
-        User_T currUser = SharedResources.getCurrentUser();
+        User_T currUser = SharedResources.getCurrentUserT();
         Staff currStaff = null;
 
         if (currUser != null) {
@@ -67,7 +67,7 @@ public class AccountLoginAsStaffView extends UIQueryView {
                 }
             }
 
-            SharedResources.setCurrStaff(currStaff);
+            SharedResources.setCurrStaffB(currStaff);
         }
     }
 }

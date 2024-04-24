@@ -1,6 +1,14 @@
 package Backend;
 
+import Database.DataStructs.StaffType;
+import Database.DataStructs.User_T;
+import Main.SharedResources;
 import Views.AccountViews.AccountDisplayAllView;
+import Views.CrudView;
+import Views.StaffViews.AdminViews.AdminManageAccountsView;
+import Views.StaffViews.AdminViews.AdminManageBranchView;
+import Views.StaffViews.AdminViews.AdminManagePaymentMethodsView;
+import Views.StaffViews.AdminViews.AdminManageStaffView;
 import Views.UIView;
 
 public class Admin extends Staff implements IAdmin {
@@ -18,13 +26,12 @@ public class Admin extends Staff implements IAdmin {
     @Override
     public UIView[] getSubViews() {
         return new UIView[] {
-                new AccountDisplayAllView(),
-                new AccountDisplayAllView(),
-                new AccountDisplayAllView(),
-                new AccountDisplayAllView()
+                new AdminManageAccountsView(),
+                new AdminManageStaffView(),
+                new AdminManageBranchView(),
+                new AdminManagePaymentMethodsView(),
         };
     }
-
     @Override
     public boolean addStaff() {
         return false;
@@ -42,12 +49,18 @@ public class Admin extends Staff implements IAdmin {
 
     @Override
     public void displayAllStaff() {
-
+        SharedResources.getUserDatabaseHelper().printAllInDatabase(true);
     }
 
     @Override
-    public boolean promoteStaff() {
-        return false;
+    public boolean promoteStaff(User_T userPartial, StaffType newStaffType) {
+        int idx;
+        idx = SharedResources.getUserDatabaseHelper().idxInDatabase_uuid(userPartial, true);
+        if (idx == -1) return false;
+
+        userPartial.setStaffType(newStaffType);
+        SharedResources.getUserDatabaseHelper().updateDataInDatabase(idx, userPartial);
+        return true;
     }
 
     @Override
