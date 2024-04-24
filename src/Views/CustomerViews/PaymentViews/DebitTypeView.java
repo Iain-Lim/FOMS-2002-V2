@@ -41,7 +41,9 @@ public class DebitTypeView extends UIQueryView {
 
         if (success == 1) {
             System.out.println("Payment Success!");
-            return ViewStatus.SUCCESS_AND_GO_BACK;
+            
+            SharedResources.setJumpToView("Views.Main.MainView");
+            return ViewStatus.JUMP_TO;
         }
 
         System.out.println("Failed to make payment");

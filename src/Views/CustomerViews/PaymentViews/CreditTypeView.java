@@ -51,12 +51,31 @@ public class CreditTypeView extends UIQueryView {
 
         if (success == 1) {
             System.out.println("Payment Success!");
+            
             SharedResources.setJumpToView("Views.Main.MainView");
             return ViewStatus.JUMP_TO;
-        }
 
-        System.out.println("Failed to make payment");
-        return ViewStatus.FAIL_AND_GO_BACK;
+        }else{
+            System.out.println("Failed to make payment");
+            return ViewStatus.FAIL_AND_GO_BACK;
+        }
     }
+
+    // @Override 
+    // public ViewStatus showAndQuery()
+    // {
+    //     super.showAndQuery();
+    //          //TODO print reciept
+
+    //         if (success == 1) {
+    //             System.out.println("Payment Success!");
+                
+    //             SharedResources.setJumpToView("Views.Main.MainView");
+    //             return ViewStatus.JUMP_TO;
+    //         }
+
+    //         System.out.println("Failed to make payment");
+    //         return ViewStatus.FAIL_AND_GO_BACK;
+    // }
 
 }

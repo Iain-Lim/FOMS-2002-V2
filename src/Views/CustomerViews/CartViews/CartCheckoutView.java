@@ -15,10 +15,10 @@ public class CartCheckoutView extends UIMenuWithExtraView {
         this.myViewName = this.getClass().getCanonicalName();
 
         this.myViewOptions = new String[] {
-            "Return"
+            "Return",
         };
         this.subViews = new UIView[] {
-            null
+            null,
         };
         
 
@@ -65,9 +65,9 @@ public class CartCheckoutView extends UIMenuWithExtraView {
         // ViewStatus viewStatus;
 
         // Continue display
-        super.showAndQuery();
+        return super.showAndQuery();
 
-        return ViewStatus.SUCCESS_AND_GO_BACK;
+        //return ViewStatus.SUCCESS_AND_GO_BACK;
     }
 
 }
