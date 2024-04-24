@@ -57,8 +57,24 @@ public class OrderPayMethodView extends UIQueryView{
             System.out.println("Failed to select payment method");
             return ViewStatus.FAIL_AND_GO_BACK;
         }
-        paymentMethod = (PaymentMethod_T) paymentMethodDBHelper.getFromDatabase(this.user_request - 1);
-        SharedResources.setCurrentPaymentMethod(paymentMethod);
+
+        // Query the DB to get the method again
+        int count = 0;
+        for (int i = 0; i < paymentMethodArr.size(); i++) {
+            PaymentMethod_T tmpPaymentMethod = (PaymentMethod_T) paymentMethodDBHelper.getFromDatabase(i);
+            if(tmpPaymentMethod.getPaymentType() == paymentType){
+                count++;
+                if (count == this.user_request)
+                {
+                    paymentMethod = tmpPaymentMethod;
+                    SharedResources.setCurrentPaymentMethod(tmpPaymentMethod);
+                    break;
+                }
+            }
+        }
+
+        //paymentMethod = (PaymentMethod_T) paymentMethodDBHelper.getFromDatabase(this.user_request - 1);
+        //SharedResources.setCurrentPaymentMethod(paymentMethod);
 
         System.out.println("Chosen payment method and type: " +
                             paymentMethod.getPaymentName() + 
