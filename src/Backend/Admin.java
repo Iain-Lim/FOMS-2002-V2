@@ -7,8 +7,8 @@ import Views.AccountViews.AccountDisplayAllView;
 import Views.CrudView;
 import Views.StaffViews.AdminViews.AdminManageAccountsView;
 import Views.StaffViews.AdminViews.AdminManageBranchView;
-import Views.StaffViews.AdminViews.AdminManagePaymentMethodsView;
 import Views.StaffViews.AdminViews.AdminManageStaffView;
+import Views.StaffViews.AdminViews.AdminPaymentMethodView.AdminManagePaymentMethodsView;
 import Views.UIView;
 
 public class Admin extends Staff implements IAdmin {

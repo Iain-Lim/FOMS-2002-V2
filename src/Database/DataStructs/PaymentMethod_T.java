@@ -2,6 +2,8 @@ package Database.DataStructs;
 
 import java.util.UUID;
 
+import Main.SharedResources;
+
 public class PaymentMethod_T implements IDatabaseItem_T {
     private UUID paymentMethodId;
     private String paymentMethodName; //Master, Visa, Paylah, PayNow, Nets
@@ -48,6 +50,8 @@ public class PaymentMethod_T implements IDatabaseItem_T {
         this.paymentType = paymentType;
     }
 
+    
+    
     @Override
     public String toString() {
         return "PaymentMethod_T{" +
@@ -59,11 +63,18 @@ public class PaymentMethod_T implements IDatabaseItem_T {
 
     @Override
     public String prettyPrint() {
-        return this.toString();
+        return "PaymentMethod_T{" +
+                "paymentMethodName=" + paymentMethodName +
+                ", paymentType=" + paymentType +
+                '}';
     }
 
     @Override
     public boolean addMeToDB() {
-        return false;
+        return SharedResources.getPaymentMethodDBHelper().addToDatabase(this);
+    }
+
+    public boolean isInDB() {
+        return SharedResources.getPaymentMethodDBHelper().isInDatabase(this);
     }
 }

@@ -7,6 +7,23 @@ public class PaymentMethodDBHelper extends DatabaseHelper{
         super(databaseString);
     }
 
+    public int idxInDatabase_PaymentName_Type(PaymentMethod_T paymentMethodPartial, boolean getFirst) {
+        int idx = -1;
+        PaymentMethod_T paymentMethodTemp;
+        for (int i = 0; i < this.databaseObject.size(); i++) {
+            paymentMethodTemp = (PaymentMethod_T) this.databaseObject.get(i);
+            if (paymentMethodPartial.getPaymentName().equals(paymentMethodTemp.getPaymentName()) &&
+                paymentMethodPartial.getPaymentType().equals(paymentMethodTemp.getPaymentType()))
+            {
+                idx = i;
+                if (getFirst) {
+                    return idx;
+                }
+            }
+        }
+        return idx;
+    }
+
     public boolean isInDatabase(PaymentMethod_T paymentMethodPartial) {
         PaymentMethod_T paymentMethodTemp;
         for (int i = 0; i < this.databaseObject.size(); i++) {

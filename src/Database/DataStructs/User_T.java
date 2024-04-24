@@ -107,7 +107,7 @@ public class User_T implements IDatabaseItem_T {
 
     public String prettyPrint() {
         return "User_T{" +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", staffType=" + staffType +
                 '}';
     }
