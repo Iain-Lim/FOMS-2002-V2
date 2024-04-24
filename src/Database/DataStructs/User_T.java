@@ -72,6 +72,10 @@ public class User_T implements IDatabaseItem_T {
         return staffType;
     }
 
+    public void setStaffType(StaffType staffType) {
+        this.staffType = staffType;
+    }
+
     public String getPassword() {
         return password;
     }

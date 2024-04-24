@@ -7,6 +7,7 @@ import Database.DataStructs.Branch_T;
 import Database.DataStructs.MenuItem_T;
 import Database.MenuDBHelper;
 import Database.OrderDBHelper;
+import Database.PaymentMethodDBHelper;
 import Database.UserDBHelper;
 import Views.MainViews.MainView;
 import Views.UIView;
@@ -17,12 +18,14 @@ public class Main {
     public static BranchDBHelper branchDBHelper;
     public static OrderDBHelper orderDBHelper;
     public static MenuDBHelper menuDBHelper;
+    public static PaymentMethodDBHelper paymentMethodDBHelper;
 
     public static void main(String[] args) {
         userDatabaseHelper = new UserDBHelper("./Data/userDatabase.ser");
         branchDBHelper = new BranchDBHelper("./Data/branchDatabase.ser");
         orderDBHelper = new OrderDBHelper("./Data/orderDatabase.ser");
         menuDBHelper = new MenuDBHelper("./Data/menuDatabase.ser");
+        paymentMethodDBHelper = new PaymentMethodDBHelper("./Data/paymentMethodDatabase.ser");
 
 //        try catch block but to catch most exceptions, but there should not have any.
         try {
@@ -55,6 +58,9 @@ public class Main {
 
         System.out.println("Order database: " + orderDBHelper.getAllFromDatabase().size());
         orderDBHelper.printAllInDatabase(false);
+
+        System.out.println("Payment Method database: " + paymentMethodDBHelper.getAllFromDatabase().size());
+        paymentMethodDBHelper.printAllInDatabase(false);
     }
 
     public static void debug_addStubData() {
@@ -77,6 +83,7 @@ public class Main {
 
         Branch_T branch;
         branch = new Branch_T("Changi City Point");
+        branchDBHelper.addToDatabase(branch);
 
         MenuItem_T menuItem;
         menuItem = new MenuItem_T(10.10f, MenuItem_T.AVAILABILITY.NOT_AVAILABLE, "Hot Tacos", "Hot Tacos", MenuItem_T.CATEGORIES.SET_MEAL);
@@ -95,6 +102,22 @@ public class Main {
 
         branch = new Branch_T("Jurong Point");
         branchDBHelper.addToDatabase(branch);
+
+        PaymentMethod_T paymentMethod;
+        paymentMethod = new PaymentMethod_T("Master", PaymentType.CREDIT_CARD);
+        paymentMethodDBHelper.addToDatabase(paymentMethod);
+
+        paymentMethod = new PaymentMethod_T("Master", PaymentType.DEBIT_CARD);
+        paymentMethodDBHelper.addToDatabase(paymentMethod);
+
+        paymentMethod = new PaymentMethod_T("Visa", PaymentType.CREDIT_CARD);
+        paymentMethodDBHelper.addToDatabase(paymentMethod);
+
+        paymentMethod = new PaymentMethod_T("Paylah", PaymentType.QR);
+        paymentMethodDBHelper.addToDatabase(paymentMethod);
+
+        paymentMethod = new PaymentMethod_T("Paynow", PaymentType.QR);
+        paymentMethodDBHelper.addToDatabase(paymentMethod);
     }
 
     private static void open_databases() {
@@ -102,11 +125,13 @@ public class Main {
         branchDBHelper.getFromDb();
         orderDBHelper.getFromDb();
         menuDBHelper.getFromDb();
+        paymentMethodDBHelper.getFromDb();
 
         SharedResources.setUserDatabaseHelper(userDatabaseHelper);
         SharedResources.setBranchDBHelper(branchDBHelper);
         SharedResources.setOrderDBHelper(orderDBHelper);
         SharedResources.setMenuDBHelper(menuDBHelper);
+        SharedResources.setPaymentMethodDBHelper(paymentMethodDBHelper);
     }
 
     private static void close_databases() {
@@ -125,5 +150,9 @@ public class Main {
         menuDBHelper.saveToDb();
         menuDBHelper = null;
         SharedResources.setMenuDBHelper(null);
+
+        paymentMethodDBHelper.saveToDb();
+        paymentMethodDBHelper = null;
+        SharedResources.setPaymentMethodDBHelper(null);
     }
 }
