@@ -8,14 +8,14 @@ import Database.PaymentMethodDBHelper;
 import Database.DataStructs.*;
 
 /* Specific Payment Type */
-public class creditType extends UIQueryView {
+public class CreditType extends UIQueryView {
 
     private final PaymentMethodDBHelper DBHelper;
     private int cardNumber;
     private int cvcCode;
     private int success;
     
-    public creditType() {
+    public CreditType() {
         this.myViewName = this.getClass().getCanonicalName();
         DBHelper = SharedResources.getPaymentMethodDBHelper();
     }

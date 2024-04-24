@@ -5,14 +5,14 @@ import Main.SharedResources;
 import java.util.*;
 
 /* Specific Payment Type */
-public class debitType extends UIQueryView {
+public class DebitType extends UIQueryView {
 
     //private final paymentDBHelper;
     private int cardNumber;
     private int cvcCode;
     private int success;
     
-    public debitType() {
+    public DebitType() {
         this.myViewName = this.getClass().getCanonicalName();
         //paymentDBHelper = SharedResources.getPaymentDatabaseHelper();
     }

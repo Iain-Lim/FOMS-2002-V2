@@ -3,6 +3,7 @@ package Views.CustomerViews;
 import Views.MenuViews.MenuDisplayMenuView;
 import Views.UIMenuView;
 import Views.UIView;
+import Views.CustomerViews.PaymentViews.OrderPayBaseView;
 
 public class CartBaseView extends UIMenuView {
     public CartBaseView() {
@@ -21,7 +22,7 @@ public class CartBaseView extends UIMenuView {
                 null,
                 null,
                 null,
-                null
+                new OrderPayBaseView()
         };
     }
 }

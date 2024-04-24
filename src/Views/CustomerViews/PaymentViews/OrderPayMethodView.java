@@ -4,14 +4,16 @@ import Views.UIQueryView;
 import Views.UIView;
 
 import java.util.*;
-
+import Views.UIMenuView;
 import Database.PaymentMethodDBHelper;
 import Database.DataStructs.IDatabaseItem_T;
 import Database.DataStructs.PaymentMethod_T;
 import Database.DataStructs.PaymentType;
+import Main.Main;
 import Main.SharedResources;
+import Views.CustomerViews.PaymentViews.*;
 
-
+/* Query for name from given type. */
 public class OrderPayMethodView extends UIQueryView{
 
     private final ArrayList<IDatabaseItem_T> paymentMethodArr;
@@ -61,6 +63,31 @@ public class OrderPayMethodView extends UIQueryView{
         System.out.println("Chosen payment method and type: " +
                             paymentMethod.getPaymentName() + 
                             paymentMethod.getPaymentType());
+        
+        
+        /* Check payment success */
+        ViewStatus status;
+        switch(paymentMethod.getPaymentType()){
+            case PaymentType.CREDIT_CARD:
+                status = new CreditType().showAndQuery();
+            case PaymentType.DEBIT_CARD:
+                status = new DebitType().showAndQuery();
+            case PaymentType.QR:
+                status = new QRType().showAndQuery();
+            default:
+                status = ViewStatus.ERROR;
+        }
+
+        /* Payment Success, print receipt() */
+        if (status == ViewStatus.SUCCESS_AND_GO_BACK)
+        {
+            // TODO Print Receipt Class
+            System.out.println("Chosen printing receipt: ");
+
+            SharedResources.setJumpToView("Views.Main.MainView");
+            return ViewStatus.JUMP_TO;
+        }
+        
         return ViewStatus.SUCCESS_AND_GO_BACK;
     }
 
