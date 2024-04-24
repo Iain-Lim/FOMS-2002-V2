@@ -1,12 +1,12 @@
 package Database.DataStructs;
 
 public enum PaymentType {
-    CREDIT_CARD('C'), DEBIT_CARD('D'), QR('Q'), OTHERS('O');
+    CREDIT_CARD("Credit Card"), DEBIT_CARD("Debit Card"), QR("QR Code"), OTHERS("Others");
 
-    public char toChar() {
-        return toChar;
+    public String toString() {
+        return toString;
     }
-
+/*/
     public String getType() {
         switch (this) {
             case CREDIT_CARD:
@@ -21,9 +21,9 @@ public enum PaymentType {
                 return null;
         }
     }
-
-    private final char toChar;
-    PaymentType(char toChar) {
-        this.toChar = toChar;
+*/
+    private final String toString;
+    PaymentType(String toString) {
+        this.toString = toString;
     }
 }
