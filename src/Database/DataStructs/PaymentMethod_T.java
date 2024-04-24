@@ -1,5 +1,7 @@
 package Database.DataStructs;
 
+import Main.SharedResources;
+
 import java.util.UUID;
 
 public class PaymentMethod_T implements IDatabaseItem_T {
@@ -12,6 +14,7 @@ public class PaymentMethod_T implements IDatabaseItem_T {
 
     public PaymentMethod_T(String paymentMethodName, PaymentType paymentType)
     {
+        this.paymentMethodId = UUID.randomUUID();
         this.paymentMethodName = paymentMethodName;
         this.paymentType = paymentType;
     }
@@ -22,7 +25,6 @@ public class PaymentMethod_T implements IDatabaseItem_T {
         this.paymentMethodName = paymentMethodName;
         this.paymentType = paymentType;
     }
-
 
     public UUID getPaymentMethodId() {
         return paymentMethodId;
@@ -52,8 +54,8 @@ public class PaymentMethod_T implements IDatabaseItem_T {
     public String toString() {
         return "PaymentMethod_T{" +
                 "paymentMethodId=" + paymentMethodId +
-                "paymentMethodName=" + paymentMethodName +
-                "paymentType=" + paymentType +
+                ", paymentMethodName='" + paymentMethodName + '\'' +
+                ", paymentType=" + paymentType +
                 '}';
     }
 
@@ -64,6 +66,10 @@ public class PaymentMethod_T implements IDatabaseItem_T {
 
     @Override
     public boolean addMeToDB() {
-        return false;
+        return SharedResources.getPaymentMethodDBHelper().addToDatabase(this);
+    }
+
+    public boolean isInDB() {
+        return SharedResources.getPaymentMethodDBHelper().isInDatabase(this);
     }
 }

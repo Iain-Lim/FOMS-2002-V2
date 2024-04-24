@@ -21,7 +21,7 @@ public class CustomerChooseBranchView extends UIQueryView {
     public CustomerChooseBranchView() {
        this.myViewName = this.getClass().getCanonicalName();
 
-        SharedResources.setCurrentBranchT(null);
+        SharedResources.setCurrentCustBranchT(null);
         branchDBHelper = SharedResources.getBranchDBHelper();
         branchArr = branchDBHelper.getAllFromDatabase();
     }
@@ -47,7 +47,7 @@ public class CustomerChooseBranchView extends UIQueryView {
             return ViewStatus.FAIL_AND_GO_BACK;
         }
         branch = (Branch_T) branchDBHelper.getFromDatabase(this.user_request - 1);
-        SharedResources.setCurrentBranchT(branch);
+        SharedResources.setCurrentCustBranchT(branch);
 
         SharedResources.setCurrentBranchB(new Branch(branch));
 

@@ -27,7 +27,7 @@ public class CustomerBaseView extends UIMenuView {
 
     @Override
     public ViewStatus showAndQuery() {
-        currBranch = SharedResources.getCurrentBranchT();
+        currBranch = SharedResources.getCurrentCustBranchT();
 
         if (currBranch == null) {
             ViewStatus viewStatus;
@@ -36,7 +36,7 @@ public class CustomerBaseView extends UIMenuView {
             viewStatus = chooseBranch.showAndQuery();
 
             if (viewStatus == ViewStatus.SUCCESS_AND_GO_BACK) {
-                currBranch = SharedResources.getCurrentBranchT();
+                currBranch = SharedResources.getCurrentCustBranchT();
 
             } else if (viewStatus == ViewStatus.FAIL_AND_GO_BACK) {
                 return ViewStatus.FAIL_AND_GO_BACK;

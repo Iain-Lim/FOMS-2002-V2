@@ -1,8 +1,8 @@
 package Views.CustomerViews.CartViews;
 
 import Main.SharedResources;
+import Views.PaymentMethodViews.PaymentMethodDisplayAllView;
 import Views.UIQueryView;
-import Views.UIView;
 
 import java.util.Scanner;
 
@@ -14,7 +14,8 @@ public class CartCheckoutView extends UIQueryView {
 
     @Override
     public void show() {
-        System.out.println("Payment Methods... ");
+        PaymentMethodDisplayAllView paymentMethodDisplayView = new PaymentMethodDisplayAllView();
+        paymentMethodDisplayView.showAndQuery();
     }
 
     @Override

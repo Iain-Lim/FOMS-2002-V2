@@ -9,26 +9,28 @@ import java.util.ArrayList;
 public class Branch {
     private Branch_T branchT;
     private Staff[] myStaff;
-    private ArrayList<MenuItem_T> branchMenu;
+//    private ArrayList<MenuItem_T> branchMenu;
 
     public Branch(Branch_T branchT) {
         this.branchT = branchT;
     }
 
-//    public boolean addToMenu(MenuItem_T menuItemT) {
-//        boolean addedToMenu;
-//        addedToMenu = SharedResources.getMenuDBHelper().addToDatabase(menuItemT);
-//        if (addedToMenu) {
-//            return branchT.addMenuItem(menuItemT);
-//        }
-//        return false;
-//    }
+    public static void printMenu(Branch_T branchT) {
+        ArrayList<MenuItem_T> branchMenu = branchT.getMenuItems();
 
-    public void printMenu() {
-        branchT = SharedResources.getCurrentBranchT();
-        branchMenu = branchT.getMenuItems();
         for (int i = 0; i < branchMenu.size(); i++) {
             System.out.println( (i+1) + ": " + branchMenu.get(i).prettyPrint());
         }
+    }
+
+    public static int maxNormalStaff(Branch_T branchT) {
+        int nBmSize = branchT.getBranchManagerArr().size();
+        System.out.println(nBmSize);
+        if (nBmSize < 0) return 0;
+        else if (nBmSize == 1) return 4;
+        else if (nBmSize == 2) return 8;
+        else if (nBmSize == 3) return 15;
+
+        return 20;
     }
 }

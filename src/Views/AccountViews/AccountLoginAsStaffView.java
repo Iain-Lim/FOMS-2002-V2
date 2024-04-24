@@ -39,7 +39,8 @@ public class AccountLoginAsStaffView extends UIQueryView {
 
         if (userVerified != null) {
             SharedResources.setCurrentUserT(userVerified);
-            setStaffObj();
+            SharedResources.setCurrentStaffBranchT(userVerified.getBranchT());
+            this.setStaffObj();
 
             System.out.println("Logged in successfully");
             return ViewStatus.SUCCESS_AND_GO_BACK;

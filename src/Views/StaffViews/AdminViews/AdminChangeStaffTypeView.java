@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class AdminChangeStaffTypeView extends UIQueryView {
     private String username;
+    private int userIdx;
     private int user_request;
     private User_T userPartialT;
     public AdminChangeStaffTypeView() {
@@ -29,7 +30,7 @@ public class AdminChangeStaffTypeView extends UIQueryView {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("username: ");
-        this.username = sc.nextLine();
+        this.userIdx = sc.nextInt();
 
         System.out.println("Staff type:");
         System.out.println("1. Admin");
@@ -42,12 +43,12 @@ public class AdminChangeStaffTypeView extends UIQueryView {
 
     @Override
     public ViewStatus handleQuery() {
-        this.userPartialT = new User_T(username);
 
-        if (!this.userPartialT.isInDB()) {
-            System.out.println("username not found!");
+        if (this.userIdx < 1 || this.userIdx > SharedResources.getUserDatabaseHelper().getAllFromDatabase().size()) {
+            System.out.println("Not valid user");
             return ViewStatus.FAIL_AND_GO_BACK;
         }
+        this.userPartialT = (User_T) SharedResources.getUserDatabaseHelper().getFromDatabase(this.userIdx-1);
 
         int idx = SharedResources.getUserDatabaseHelper().idxInDatabase_username(userPartialT, true);
 

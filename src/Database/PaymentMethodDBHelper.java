@@ -2,7 +2,7 @@ package Database;
 
 import Database.DataStructs.PaymentMethod_T;
 
-public class PaymentMethodDBHelper extends DatabaseHelper{
+public class PaymentMethodDBHelper extends DatabaseHelper {
     public PaymentMethodDBHelper(String databaseString) {
         super(databaseString);
     }
@@ -12,7 +12,6 @@ public class PaymentMethodDBHelper extends DatabaseHelper{
         for (int i = 0; i < this.databaseObject.size(); i++) {
             paymentMethodTemp = (PaymentMethod_T) this.databaseObject.get(i);
             if (
-                //paymentMethodPartial.getPaymentMethodId().equals(paymentMethodTemp.getPaymentMethodId()) ||
                     (paymentMethodPartial.getPaymentName().equals(paymentMethodTemp.getPaymentName()) &&
                             paymentMethodPartial.getPaymentType().equals(paymentMethodTemp.getPaymentType()))
             ) {
@@ -20,6 +19,23 @@ public class PaymentMethodDBHelper extends DatabaseHelper{
             }
         }
         return false;
+    }
+
+    public int idxInDatabase_PaymentName_Type(PaymentMethod_T paymentMethodPartial, boolean getFirst) {
+        int idx = -1;
+        PaymentMethod_T paymentMethodTemp;
+        for (int i = 0; i < this.databaseObject.size(); i++) {
+            paymentMethodTemp = (PaymentMethod_T) this.databaseObject.get(i);
+            if (paymentMethodPartial.getPaymentName().equals(paymentMethodTemp.getPaymentName()) &&
+                    paymentMethodPartial.getPaymentType().equals(paymentMethodTemp.getPaymentType()))
+            {
+                idx = i;
+                if (getFirst) {
+                    return idx;
+                }
+            }
+        }
+        return idx;
     }
 
     public boolean addToDatabase(PaymentMethod_T newPaymentMethod) {

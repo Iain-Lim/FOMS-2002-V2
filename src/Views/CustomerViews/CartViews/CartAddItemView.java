@@ -1,5 +1,6 @@
 package Views.CustomerViews.CartViews;
 
+import Main.SharedResources;
 import Views.MenuViews.MenuDisplayView;
 import Views.UIQueryView;
 import Views.UIView;
@@ -29,6 +30,10 @@ public class CartAddItemView extends UIQueryView {
     public ViewStatus handleQuery() {
 //      add to order
 
+
+
+
+//
 //        Order_T orderPartialT = new Order_T();
 //        orderPartialT.setOrderId(UUID.nameUUIDFromBytes(orderId.getBytes()));
 //
@@ -43,7 +48,7 @@ public class CartAddItemView extends UIQueryView {
 //
 //        Order_T orderT = (Order_T) orderDBHelper.getFromDatabase(itemIdxInDb);
 //        System.out.println(orderT.prettyPrint());
-//
+
         return ViewStatus.SUCCESS_AND_GO_BACK;
     }
 }

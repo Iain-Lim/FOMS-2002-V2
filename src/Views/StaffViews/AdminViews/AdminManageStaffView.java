@@ -9,7 +9,7 @@ public class AdminManageStaffView extends UIMenuView {
         this.myViewName = this.getClass().getCanonicalName();
         this.myViewOptions = new String[] {
                 "Change Staff Type",
-                "Move Branch",
+                "Move Staff To Branch",
                 "See All",
         };
         this.subViews = new UIView[] {
@@ -18,7 +18,4 @@ public class AdminManageStaffView extends UIMenuView {
                 new AccountDisplayAllView(),
         };
     }
-
-//    todo list accounts and query
-
 }

@@ -93,22 +93,11 @@ public class User_T implements IDatabaseItem_T {
         return SharedResources.getUserDatabaseHelper().isInDatabase(this);
     }
 
-    @Override
-    public String toString() {
-        return "User_T{" +
-                "userId=" + userUUID +
-                ", username='" + username + '\'' +
-//                ", password='" + password + '\'' +
-                ", password=" + UUID.nameUUIDFromBytes(password.getBytes()) +
-                ", isStaff=" + isStaff  + '\'' +
-                ", staffType=" + staffType  + '\'' +
-                '}';
-    }
-
     public String prettyPrint() {
         return "User_T{" +
                 ", username='" + username + '\'' +
                 ", staffType=" + staffType +
+                ", branchT=" + branchT +
                 '}';
     }
 
@@ -138,5 +127,20 @@ public class User_T implements IDatabaseItem_T {
 
     public void printUser() {
         System.out.println(">> " + this.getUsername() + ", " + this.getStaffType());
+    }
+
+    @Override
+    public String toString() {
+        return "User_T{" +
+                "userUUID=" + userUUID +
+                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+                ", password=" + UUID.nameUUIDFromBytes(password.getBytes()) +
+//                ", isStaff=" + isStaff +
+                ", staffType=" + staffType +
+                ", branchUUID=" + branchUUID +
+                ", branchT=" + branchT +
+                ", gender=" + gender +
+                '}';
     }
 }
