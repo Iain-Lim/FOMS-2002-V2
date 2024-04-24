@@ -24,8 +24,6 @@ public class creditType extends UIQueryView {
     public void query() {
         Scanner sc = new Scanner(System.in);
 
-        int 
-
         ArrayList<IDatabaseItem_T> paymentArray = DBHelper.getAllFromDatabase();
         for (int i=0; i<paymentArray.size(); i++){
             PaymentMethod_T temp = (PaymentMethod_T) paymentArray.get(i);

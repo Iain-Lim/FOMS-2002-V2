@@ -14,9 +14,9 @@ public class OrderPayBaseView extends UIMenuView{
 
         this.myViewName = this.getClass().getCanonicalName();
         this.subViews = new UIView[] {
-                new creditType(),                
-                new debitType(),
-                new QRType(PaymentType.CREDIT_CARD)
+                new OrderPayMethodView(PaymentType.CREDIT_CARD),                
+                new OrderPayMethodView(PaymentType.DEBIT_CARD),
+                new OrderPayMethodView(PaymentType.QR)
         };
 
         this.myViewOptions = new String[] {
