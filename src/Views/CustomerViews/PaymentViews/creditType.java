@@ -40,7 +40,7 @@ public class CreditType extends UIQueryView {
         System.out.println("cardNumber: ");
         cardNumber = Integer.parseInt(sc.nextLine());
 
-        System.out.println("Password: ");
+        System.out.println("cvcCode: ");
         cvcCode = Integer.parseInt(sc.nextLine());
 
         System.out.println("Success? 1 for success: ");

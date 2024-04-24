@@ -70,12 +70,16 @@ public class OrderPayMethodView extends UIQueryView{
         switch(paymentMethod.getPaymentType()){
             case PaymentType.CREDIT_CARD:
                 status = new CreditType().showAndQuery();
+                break;
             case PaymentType.DEBIT_CARD:
                 status = new DebitType().showAndQuery();
+                break;
             case PaymentType.QR:
                 status = new QRType().showAndQuery();
+                break;
             default:
                 status = ViewStatus.ERROR;
+                break;
         }
 
         /* Payment Success, print receipt() */
