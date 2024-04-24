@@ -14,7 +14,7 @@ public class AdminManageStaffView extends UIMenuView {
         };
         this.subViews = new UIView[] {
                 new AdminChangeStaffTypeView(),
-                null,
+                new AdminMoveStaffView(),
                 new AccountDisplayAllView(),
         };
     }

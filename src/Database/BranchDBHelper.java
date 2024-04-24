@@ -2,6 +2,7 @@ package Database;
 
 import Database.DataStructs.Branch_T;
 import Database.DataStructs.MenuItem_T;
+import Database.DataStructs.User_T;
 
 public class BranchDBHelper extends DatabaseHelper {
     public BranchDBHelper(String databaseString) {
@@ -20,6 +21,21 @@ public class BranchDBHelper extends DatabaseHelper {
             }
         }
         return false;
+    }
+
+    public int idxInDatabase_branchName(Branch_T branchPartial, boolean getFirst) {
+        int idx = -1;
+        Branch_T branchTemp;
+        for (int i = 0; i < this.databaseObject.size(); i++) {
+            branchTemp = (Branch_T) this.databaseObject.get(i);
+            if (branchPartial.getBranchName().equals(branchTemp.getBranchName())) {
+                idx = i;
+                if (getFirst) {
+                    return idx;
+                }
+            }
+        }
+        return idx;
     }
 
     public boolean addToDatabase(Branch_T branchFull) {

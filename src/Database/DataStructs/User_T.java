@@ -11,7 +11,40 @@ public class User_T implements IDatabaseItem_T {
     private boolean isStaff;
     private StaffType staffType;
     private UUID branchUUID;
+    private Branch_T branchT;
     private int gender;
+
+    public void setUserUUID(UUID userUUID) {
+        this.userUUID = userUUID;
+    }
+
+    public void setStaff(boolean staff) {
+        isStaff = staff;
+    }
+
+    public UUID getBranchUUID() {
+        return branchUUID;
+    }
+
+    public void setBranchUUID(UUID branchUUID) {
+        this.branchUUID = branchUUID;
+    }
+
+    public Branch_T getBranchT() {
+        return branchT;
+    }
+
+    public void setBranchT(Branch_T branchT) {
+        this.branchT = branchT;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
 
     public void setUsername(String username) {
         this.username = username;

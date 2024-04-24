@@ -2,24 +2,38 @@ package Main;
 
 import Backend.Branch;
 import Backend.Staff;
-import Database.BranchDBHelper;
+import Database.*;
 import Database.DataStructs.Branch_T;
+import Database.DataStructs.PaymentMethod_T;
 import Database.DataStructs.User_T;
-import Database.MenuDBHelper;
-import Database.OrderDBHelper;
-import Database.UserDBHelper;
 
 public class SharedResources {
     private static UserDBHelper userDatabaseHelper;
     private static OrderDBHelper orderDBHelper;
     private static BranchDBHelper branchDBHelper;
     private static MenuDBHelper menuDBHelper;
+    private static PaymentMethodDBHelper paymentMethodDBHelper;
+    private static PaymentMethod_T currentPaymentMethod;
     private static Staff currStaffB;
     private static User_T currentUserT;
     private static Branch_T currentBranchT;
     private static Branch currentBranchB;
     private static String jumpToView = "";
     private static String errorMessage = "";
+    public static PaymentMethod_T getCurrentPaymentMethod() {
+        return currentPaymentMethod;
+    }
+
+    public static void setCurrentPaymentMethod(PaymentMethod_T currentPaymentMethod) {
+        SharedResources.currentPaymentMethod = currentPaymentMethod;
+    }
+
+    public static PaymentMethodDBHelper getPaymentMethodDBHelper() {
+        return paymentMethodDBHelper;
+    }
+    public static void setPaymentMethodDBHelper(PaymentMethodDBHelper paymentMethodDBHelper) {
+        SharedResources.paymentMethodDBHelper = paymentMethodDBHelper;
+    }
 
     public static UserDBHelper getUserDatabaseHelper() {
         return userDatabaseHelper;

@@ -5,7 +5,9 @@ import Database.BranchDBHelper;
 import Database.DataStructs.Branch_T;
 import Database.DataStructs.IDatabaseItem_T;
 import Main.SharedResources;
+import Views.BranchViews.BranchDisplayAllView;
 import Views.UIQueryView;
+import Views.UIView;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,11 +28,8 @@ public class CustomerChooseBranchView extends UIQueryView {
 
     @Override
     public void show() {
-        Branch_T tmpBranch;
-        for (int i = 0; i < branchArr.size(); i++) {
-            tmpBranch = (Branch_T) branchDBHelper.getFromDatabase(i);
-            System.out.println( (i+1) + ": " + tmpBranch.getBranchName() );
-        }
+        UIView viewBranches = new BranchDisplayAllView();
+        viewBranches.showAndQuery();
     }
 
     @Override

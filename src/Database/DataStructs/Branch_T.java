@@ -8,12 +8,15 @@ import java.util.UUID;
 public class Branch_T implements IDatabaseItem_T {
     private UUID branchUUID;
     public ArrayList<MenuItem_T> menuItems;
+    public ArrayList<User_T> staffArr;
+
     private String branchName;
     public Branch_T() { }
 
     public Branch_T(String branchName) {
         this.branchUUID = UUID.randomUUID();
         this.menuItems = new ArrayList<>();
+        this.staffArr = new ArrayList<>();
         this.branchName = branchName;
     }
 
@@ -77,6 +80,10 @@ public class Branch_T implements IDatabaseItem_T {
             tempMenuItemT.addMeToDB();
         }
         return SharedResources.getBranchDBHelper().addToDatabase(this);
+    }
+
+    public boolean isInDB() {
+        return SharedResources.getBranchDBHelper().isInDatabase(this);
     }
 
     @Override
