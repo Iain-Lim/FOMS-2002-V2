@@ -5,12 +5,11 @@ import java.util.UUID;
 public class PaymentMethod_T implements IDatabaseItem_T {
     private UUID paymentMethodId;
     private String paymentMethodName; //Master, Visa, Paylah, PayNow, Nets
-    
     private PaymentType paymentType;
 
 
     public PaymentMethod_T() { }
-
+    
     public PaymentMethod_T(String paymentMethodName, PaymentType paymentType)
     {
         this.paymentMethodName = paymentMethodName;
@@ -39,6 +38,14 @@ public class PaymentMethod_T implements IDatabaseItem_T {
     
     public void setPaymentName(String paymentMethodName) {
         this.paymentMethodName = paymentMethodName;
+    }
+
+    public PaymentType getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(PaymentType paymentType) {
+        this.paymentType = paymentType;
     }
 
     @Override
