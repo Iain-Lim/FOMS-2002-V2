@@ -12,7 +12,7 @@ public class PaymentMethodDBHelper extends DatabaseHelper{
         for (int i = 0; i < this.databaseObject.size(); i++) {
             paymentMethodTemp = (PaymentMethod_T) this.databaseObject.get(i);
             if (
-                    paymentMethodPartial.getPaymentMethodId().equals(paymentMethodTemp.getPaymentMethodId()) ||
+                    //paymentMethodPartial.getPaymentMethodId().equals(paymentMethodTemp.getPaymentMethodId()) ||
                     (paymentMethodPartial.getPaymentName().equals(paymentMethodTemp.getPaymentName()) &&
                     paymentMethodPartial.getPaymentType().equals(paymentMethodTemp.getPaymentType()))
             ) {
