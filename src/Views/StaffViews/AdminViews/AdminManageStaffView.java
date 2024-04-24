@@ -1,6 +1,7 @@
 package Views.StaffViews.AdminViews;
 
 import Views.AccountViews.AccountDisplayAllView;
+import Views.AccountViews.AccountDisplayFilteredView;
 import Views.UIMenuView;
 import Views.UIView;
 
@@ -10,12 +11,14 @@ public class AdminManageStaffView extends UIMenuView {
         this.myViewOptions = new String[] {
                 "Change Staff Type",
                 "Move Branch",
-                "See All",
+                "Display All",
+                "Display All but filtered"
         };
         this.subViews = new UIView[] {
                 new AdminChangeStaffTypeView(),
                 new AdminMoveStaffView(),
                 new AccountDisplayAllView(),
+                new AccountDisplayFilteredView()
         };
     }
 
