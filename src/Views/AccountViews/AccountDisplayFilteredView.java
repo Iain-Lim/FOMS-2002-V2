@@ -44,7 +44,7 @@ public class AccountDisplayFilteredView extends UIQueryView {
         switch (filterBy){
             case 1:
                 System.out.println("Branches:");
-                new BranchDisplayAllView();
+                new BranchDisplayAllView().showAndQuery();
 
                 break;
             case 2: // Staff Type
@@ -83,6 +83,10 @@ public class AccountDisplayFilteredView extends UIQueryView {
     @Override
     public ViewStatus handleQuery() {
 
+        if (error==1){
+            return ViewStatus.FAIL_AND_GO_BACK;
+        }
+
         /* For each user in DB, check through filter, then print. */
         User_T userTemp;
         ArrayList<IDatabaseItem_T> databaseObject = SharedResources.getUserDatabaseHelper().getAllFromDatabase();
@@ -91,12 +95,12 @@ public class AccountDisplayFilteredView extends UIQueryView {
             
             switch (filterBy){
                 case 1: // Branch
-                    if(userTemp.getBranchT() == SharedResources.getBranchDBHelper().getFromDatabase(filterFor)){
-                        userTemp.prettyPrint();
+                    if(userTemp.getBranchT() == SharedResources.getBranchDBHelper().getFromDatabase(filterFor-1)){
+                        System.out.println(userTemp.prettyPrint());
                     }
                     break;
                 case 2: // Staff Type
-                    StaffType targetType;
+                    StaffType targetType = StaffType.NA;
                     switch (filterFor){
                         case 1:
                             targetType = StaffType.ADMIN;
@@ -109,14 +113,16 @@ public class AccountDisplayFilteredView extends UIQueryView {
                             break;
                     }
                     if(userTemp.getStaffType() == targetType){
-                        userTemp.prettyPrint();
+                        System.out.println(userTemp.prettyPrint());
                     }
                     break;
                 case 3: // Gender //TODO determine gender values
-                    if (userTemp.getGender() == filterFor)
+                    if (userTemp.getGender() == filterFor){
+                        System.out.println(userTemp.prettyPrint());
+                    }
                     break;
                 case 4: // Age Group
-                    int lowerBound, upperBound;
+                    int lowerBound = 0, upperBound = 0;
                     switch (filterFor){
                         case 1:
                             lowerBound = 18; upperBound = 29;
@@ -134,8 +140,8 @@ public class AccountDisplayFilteredView extends UIQueryView {
                             lowerBound = 60; upperBound = 999;
                             break;
                     }
-                    if( lowerBound <= userTemp.getAge() && userTemp.getAge() >= upperBound){
-                        userTemp.prettyPrint();
+                    if( lowerBound <= userTemp.getAge() && userTemp.getAge() <= upperBound){
+                        System.out.println(userTemp.prettyPrint());
                     }
                 default: // Should not occur
                     break;

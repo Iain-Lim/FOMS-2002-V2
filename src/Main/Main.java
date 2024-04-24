@@ -64,11 +64,15 @@ public class Main {
         for (int i = 0; i < 2; i++) {
             username = "user" + i;
             user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
+            user.setAge(20);
+            user.setGender(1);
             user.addMeToDB();
         }
         for (int i = 2; i < 5; i++) {
             username = "user" + i;
             user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
+            user.setAge(35);
+            user.setGender(2);
             user.addMeToDB();
         }
 
@@ -80,6 +84,11 @@ public class Main {
         MenuItem_T menuItem;
 
         branch = new Branch_T("Changi City Point");
+
+        // user = new User_T("user68", "admin", true, StaffType.ADMIN);
+        // user.setBranchT(branch);
+        // user.addMeToDB();
+
         menuItem = new MenuItem_T(10.10f, MenuItem_T.AVAILABILITY.NOT_AVAILABLE, "Hot Tacos", "Hot Tacos", MenuItem_T.CATEGORIES.SET_MEAL);
         branch.addMenuItem(menuItem);
         menuItem = new MenuItem_T(2.10f, MenuItem_T.AVAILABILITY.AVAILABLE, "Ice Milo", "Ice Milo", MenuItem_T.CATEGORIES.DRINK);
