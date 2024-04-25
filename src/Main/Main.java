@@ -108,13 +108,16 @@ public class Main {
             user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
             user.setAge(21);
             user.setGender(1); //1 male
+            user.setBranchT((Branch_T) SharedResources.getBranchDBHelper().getFromDatabase(i%2));
             user.addMeToDB();
         }
-        for (int i = 2; i < 5; i++) {
+        
+        for (int i = 2; i < 4; i++) {
             username = "user" + i;
             user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
             user.setAge(36);
             user.setGender(2); // 2 female
+            user.setBranchT((Branch_T) SharedResources.getBranchDBHelper().getFromDatabase(i%2));
             user.addMeToDB();
         }
 
