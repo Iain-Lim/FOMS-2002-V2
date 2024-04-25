@@ -106,13 +106,21 @@ public class Main {
         for (int i = 0; i < 2; i++) {
             username = "user" + i;
             user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
+            user.setAge(21);
+            user.setGender(1); //1 male
             user.addMeToDB();
         }
         for (int i = 2; i < 5; i++) {
             username = "user" + i;
             user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
+            user.setAge(36);
+            user.setGender(2); // 2 female
             user.addMeToDB();
         }
+
+        // user = new User_T("user68", "admin", true, StaffType.ADMIN);
+        // user.setBranchT(branch);
+        // user.addMeToDB();
     }
 
     private static void open_databases() {
