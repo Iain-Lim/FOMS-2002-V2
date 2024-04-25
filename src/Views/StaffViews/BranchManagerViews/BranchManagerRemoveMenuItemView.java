@@ -1,11 +1,15 @@
 package Views.StaffViews.BranchManagerViews;
 
+import Backend.Branch;
 import Database.DataStructs.Branch_T;
 import Database.DataStructs.MenuItem_T;
 import Database.DataStructs.User_T;
 import Main.SharedResources;
+import Views.MenuViews.MenuDisplayView;
 import Views.UIQueryView;
+import Views.UIView;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BranchManagerRemoveMenuItemView extends UIQueryView {
@@ -17,12 +21,15 @@ public class BranchManagerRemoveMenuItemView extends UIQueryView {
     public BranchManagerRemoveMenuItemView() {
         this.myViewName = this.getClass().getCanonicalName();
     }
-
     @Override
     public void query() {
+
+        MenuDisplayView menuDisplayView = new MenuDisplayView(true);
+        menuDisplayView.show();
+
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("> ");
+        System.out.print("Removing item > ");
         itemIdx = sc.nextInt();
     }
 
@@ -34,9 +41,10 @@ public class BranchManagerRemoveMenuItemView extends UIQueryView {
             return ViewStatus.FAIL_AND_GO_BACK;
         }
         this.menuItemT = (MenuItem_T) SharedResources.getMenuDBHelper().getFromDatabase(this.itemIdx-1);
+        this.branchT = SharedResources.getCurrentStaffBranchT();
 
         int idx = SharedResources.getMenuDBHelper().idxInDatabase_itemUUID(menuItemT, true);
-        SharedResources.getMenuDBHelper().removeFromDatabase(idx);
+        branchT.removeMenuItem(idx);
         System.out.println("item removed!");
         return ViewStatus.SUCCESS_AND_GO_BACK;
     }

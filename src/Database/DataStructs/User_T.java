@@ -13,6 +13,15 @@ public class User_T implements IDatabaseItem_T {
     private UUID branchUUID;
     private Branch_T branchT;
     private int gender;
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public void setUserUUID(UUID userUUID) {
         this.userUUID = userUUID;

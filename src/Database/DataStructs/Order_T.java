@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Order_T implements IDatabaseItem_T {
+    private boolean isTakeaway;
     private UUID orderId;
     private UUID branchId;
     private UUID customerId;
@@ -99,10 +100,12 @@ public class Order_T implements IDatabaseItem_T {
         this.menuItems = menuItems;
     }
 
+
     @Override
     public String toString() {
         return "Order_T{" +
-                "orderId=" + orderId +
+                "isTakeaway=" + isTakeaway +
+                ", orderId=" + orderId +
                 ", branchId=" + branchId +
                 ", customerId=" + customerId +
                 ", ts=" + ts +
@@ -119,7 +122,18 @@ public class Order_T implements IDatabaseItem_T {
 
     public String printReceipt() {
         String ret = "";
+        if (menuItems.size() < 1) {
+            ret += "Your Cart Is Empty...";
+            return ret;
+        }
+
         ret += "Order ID: " + this.orderId.toString() + "\n";
+        if (this.isTakeaway) {
+            ret += "=> Takeaway \n";
+        } else {
+            ret += "=> Dine In \n";
+        }
+
         for (int i = 0; i < menuItems.size(); i++) {
             ret += (
                     (i+1) +
@@ -129,12 +143,15 @@ public class Order_T implements IDatabaseItem_T {
                             "\n"
             );
         }
-
-        if (menuItems.size() < 1) {
-            ret += "Your Cart Is Empty...";
-        }
-
         return ret;
+    }
+
+    public boolean isTakeaway() {
+        return isTakeaway;
+    }
+
+    public void setTakeaway(boolean takeaway) {
+        isTakeaway = takeaway;
     }
 
     public String printOrder() {

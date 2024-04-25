@@ -30,4 +30,12 @@ public class CartBaseView extends UIMenuView {
             SharedResources.setCurrentCustomerOrder(new Order_T());
         }
     }
+
+    @Override
+    public ViewStatus showAndQuery() {
+        UIView getIfTakeAway = new CartQueryTakeawayView();
+        getIfTakeAway.showAndQuery();
+
+        return super.showAndQuery();
+    }
 }

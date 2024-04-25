@@ -15,12 +15,22 @@ public class Branch {
         this.branchT = branchT;
     }
 
-    public static void printMenu(Branch_T branchT) {
+    public static ArrayList<MenuItem_T> printMenu(Branch_T branchT, boolean show) {
+        if (branchT == null) {
+            System.out.println("You have no branch, unable to print menu");
+            return null;
+        }
         ArrayList<MenuItem_T> branchMenu = branchT.getMenuItems();
+        ArrayList<MenuItem_T> filteredBranchMenu = new ArrayList<>();
 
         for (int i = 0; i < branchMenu.size(); i++) {
-            System.out.println( (i+1) + ": " + branchMenu.get(i).prettyPrint());
+            filteredBranchMenu.add(branchMenu.get(i));
+            if (show) {
+                System.out.println((i + 1) + ": " + branchMenu.get(i).prettyPrint());
+            }
         }
+
+        return filteredBranchMenu;
     }
 
     public static int maxNormalStaff(Branch_T branchT) {

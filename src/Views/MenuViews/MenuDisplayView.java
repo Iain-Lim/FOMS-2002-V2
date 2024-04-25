@@ -36,7 +36,7 @@ public class MenuDisplayView extends UIView {
             this.branchT = SharedResources.getCurrentCustBranchT();
         }
 
-        Branch.printMenu(this.branchT);
+        Branch.printMenu(this.branchT, true);
     }
 
     @Override

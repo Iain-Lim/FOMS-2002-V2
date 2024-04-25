@@ -89,28 +89,28 @@ public class Main {
 
         PaymentMethod_T paymentMethod;
         paymentMethod = new PaymentMethod_T("Master", PaymentType.CREDIT_CARD);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         paymentMethod = new PaymentMethod_T("Master", PaymentType.DEBIT_CARD);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         paymentMethod = new PaymentMethod_T("Visa", PaymentType.CREDIT_CARD);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         paymentMethod = new PaymentMethod_T("Paylah", PaymentType.QR);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         paymentMethod = new PaymentMethod_T("Paynow", PaymentType.QR);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         for (int i = 0; i < 2; i++) {
             username = "user" + i;
-            user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
+            user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
             user.addMeToDB();
         }
         for (int i = 2; i < 5; i++) {
             username = "user" + i;
-            user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
+            user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
             user.addMeToDB();
         }
     }
