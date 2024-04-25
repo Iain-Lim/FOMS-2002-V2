@@ -45,7 +45,7 @@ public class StaffProcessOrdersView extends UIQueryView {
 
     // From user request, obtain index to selected order.
     int idx = SharedResources.getOrderDBHelper().idxInDatabaseIfBranchIfNewOrderByOccuranceIndex(
-        SharedResources.getCurrentStaffBranchT(), this.user_request
+            SharedResources.getCurrentStaffBranchT(), this.user_request
     );
 
     // Order not found
