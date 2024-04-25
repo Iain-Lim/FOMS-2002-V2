@@ -23,7 +23,6 @@ public class User_T implements IDatabaseItem_T {
         this.age = age;
     }
 
-
     public void setUserUUID(UUID userUUID) {
         this.userUUID = userUUID;
     }

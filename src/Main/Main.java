@@ -89,19 +89,19 @@ public class Main {
 
         PaymentMethod_T paymentMethod;
         paymentMethod = new PaymentMethod_T("Master", PaymentType.CREDIT_CARD);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         paymentMethod = new PaymentMethod_T("Master", PaymentType.DEBIT_CARD);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         paymentMethod = new PaymentMethod_T("Visa", PaymentType.CREDIT_CARD);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         paymentMethod = new PaymentMethod_T("Paylah", PaymentType.QR);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         paymentMethod = new PaymentMethod_T("Paynow", PaymentType.QR);
-        paymentMethodDBHelper.addToDatabase(paymentMethod);
+        paymentMethod.addMeToDB();
 
         for (int i = 0; i < 2; i++) {
             username = "user" + i;
@@ -120,10 +120,6 @@ public class Main {
             user.setBranchT((Branch_T) SharedResources.getBranchDBHelper().getFromDatabase(i%2));
             user.addMeToDB();
         }
-
-        // user = new User_T("user68", "admin", true, StaffType.ADMIN);
-        // user.setBranchT(branch);
-        // user.addMeToDB();
     }
 
     private static void open_databases() {

@@ -1,13 +1,12 @@
 package Views.StaffViews.BranchManagerViews;
 
-import Views.BranchViews.BranchDisplayAllView;
 import Views.MenuViews.MenuDisplayView;
 import Views.UIMenuView;
 import Views.UIView;
 
-public class BranchManagerEditMenuView extends UIMenuView {
+public class BranchManagerAmendMenuView extends UIMenuView {
     private int user_request;
-    public BranchManagerEditMenuView() {
+    public BranchManagerAmendMenuView() {
         this.myViewName = this.getClass().getCanonicalName();
         this.myViewOptions = new String[] {
                 "Add",
@@ -18,7 +17,7 @@ public class BranchManagerEditMenuView extends UIMenuView {
         this.subViews = new UIView[] {
                 new BranchManagerAddMenuItemView(),
                 new BranchManagerRemoveMenuItemView(),
-                null,
+                new BranchManagerEditMenuItemView(),
                 new MenuDisplayView(true),
         };
     }
