@@ -49,6 +49,7 @@ public class AdminChangeAccountUsernameView extends UIQueryView {
         tempUserT.setUsername(newUsername);
 
         SharedResources.getUserDatabaseHelper().updateDataInDatabase(idx, tempUserT);
+        System.out.println("username changed");
         return ViewStatus.SUCCESS_AND_GO_BACK;
     }
 }

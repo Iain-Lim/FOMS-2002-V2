@@ -16,7 +16,6 @@ public class AdminCloseBranchView extends UIQueryView {
         this.myViewName = this.getClass().getCanonicalName();
     }
 
-
     @Override
     public void show() {
         UIView viewBranches = new BranchDisplayAllView();
@@ -41,7 +40,7 @@ public class AdminCloseBranchView extends UIQueryView {
         }
 
         int idx = SharedResources.getBranchDBHelper().idxInDatabase_branchName(branchPartialT, true);
-        SharedResources.getUserDatabaseHelper().removeFromDatabase(idx);
+        SharedResources.getBranchDBHelper().removeFromDatabase(idx);
 
         System.out.println("removed branch successful");
         return ViewStatus.SUCCESS_AND_GO_BACK;

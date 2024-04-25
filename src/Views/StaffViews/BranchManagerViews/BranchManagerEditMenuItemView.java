@@ -109,16 +109,12 @@ public class BranchManagerEditMenuItemView extends UIQueryView {
                 break;
             case 2:
                 System.out.print("1. AVAILABLE\n" +
-                        "2. NA\n" +
-                        "3. NOT_AVAILABLE \n> ");
+                        "2. NOT_AVAILABLE \n> ");
                 switch (sc.nextInt()) {
                     case 1:
                         menuItemT.setAvailability(MenuItem_T.AVAILABILITY.AVAILABLE);
                         break;
                     case 2:
-                        menuItemT.setAvailability(MenuItem_T.AVAILABILITY.NA);
-                        break;
-                    case 3:
                         menuItemT.setAvailability(MenuItem_T.AVAILABILITY.NOT_AVAILABLE);
                         break;
                     default:
