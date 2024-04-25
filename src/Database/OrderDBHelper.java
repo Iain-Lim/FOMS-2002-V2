@@ -3,6 +3,7 @@ package Database;
 import Backend.Branch;
 import Database.DataStructs.Branch_T;
 import Database.DataStructs.IDatabaseItem_T;
+import Database.DataStructs.OrderStatus;
 import Database.DataStructs.Order_T;
 
 public class OrderDBHelper extends DatabaseHelper {
@@ -56,5 +57,26 @@ public class OrderDBHelper extends DatabaseHelper {
             return false;
         }
         return this.databaseObject.add(orderFull);
+    }
+
+    public String printIfBranchIfNewOrder(Branch_T branchPartial) {
+        String ret = "";
+
+        Order_T orderTemp;
+        int j = 0;
+        for (int i = 0; i < this.databaseObject.size(); i++) {
+            orderTemp = (Order_T) this.databaseObject.get(i);
+            // Match branch
+            if (branchPartial.getBranchUUID().equals(orderTemp.getBranchId())) {
+                // Match IN_PROGRESS order status
+                if (orderTemp.getOrderStatus() == OrderStatus.IN_PROGRESS){
+                    ret += j + ": " + orderTemp.getOrderId().toString() + "\n";
+                    j++;
+                }
+            }
+        }
+
+        return ret;
+
     }
 }
