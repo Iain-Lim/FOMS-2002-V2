@@ -10,7 +10,7 @@ public class AdminManageBranchView extends UIMenuView {
         this.myViewOptions = new String[] {
                 "Open",
                 "Close",
-                "See All",
+                "See All"
         };
         this.subViews = new UIView[] {
                 new AdminOpenBranchView(),
