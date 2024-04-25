@@ -90,13 +90,15 @@ public class AccountDisplayFilteredView extends UIQueryView {
         /* For each user in DB, check through filter, then print. */
         User_T userTemp;
         ArrayList<IDatabaseItem_T> databaseObject = SharedResources.getUserDatabaseHelper().getAllFromDatabase();
+        int displayIndex = 0;
         for (int i = 0; i < databaseObject.size(); i++) {
             userTemp = (User_T) databaseObject.get(i);
             
             switch (filterBy){
                 case 1: // Branch
                     if(userTemp.getBranchT() == SharedResources.getBranchDBHelper().getFromDatabase(filterFor-1)){
-                        System.out.println(userTemp.prettyPrint());
+                        displayUser_T(userTemp,i);
+                        //System.out.println(userTemp.prettyPrint());
                     }
                     break;
                 case 2: // Staff Type
@@ -113,12 +115,14 @@ public class AccountDisplayFilteredView extends UIQueryView {
                             break;
                     }
                     if(userTemp.getStaffType() == targetType){
-                        System.out.println(userTemp.prettyPrint());
+                        displayUser_T(userTemp,i);
+                        //System.out.println(userTemp.prettyPrint());
                     }
                     break;
                 case 3: // Gender //TODO determine gender values
                     if (userTemp.getGender() == filterFor){
-                        System.out.println(userTemp.prettyPrint());
+                        displayUser_T(userTemp,i);
+                        //System.out.println(userTemp.prettyPrint());
                     }
                     break;
                 case 4: // Age Group
@@ -141,7 +145,8 @@ public class AccountDisplayFilteredView extends UIQueryView {
                             break;
                     }
                     if( lowerBound <= userTemp.getAge() && userTemp.getAge() <= upperBound){
-                        System.out.println(userTemp.prettyPrint());
+                        displayUser_T(userTemp,i);
+                        //System.out.println(userTemp.prettyPrint());
                     }
                 default: // Should not occur
                     break;
@@ -149,6 +154,18 @@ public class AccountDisplayFilteredView extends UIQueryView {
         }
 
         return ViewStatus.SUCCESS_AND_GO_BACK;
+    }
+
+
+    private void displayUser_T(User_T tmpUser,int displayIndex){
+            int i = displayIndex;
+
+            System.out.print( (i+1) + ": (" + tmpUser.getStaffType().toChar() + ") -> " + tmpUser.getUsername() + " -> branch: ");
+            if (tmpUser.getBranchT() != null) {
+                System.out.println(tmpUser.getBranchT().getBranchName());
+            } else {
+                System.out.println("null");
+            }
     }
 
         /* Steps Required */
