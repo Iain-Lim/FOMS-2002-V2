@@ -1,9 +1,10 @@
 package Views.CustomerViews.CartViews;
 
+import Database.DataStructs.OrderStatus;
+import Database.DataStructs.Order_T;
 import Main.SharedResources;
+import Views.PaymentMethodViews.PaymentMethodDisplayAllView;
 import Views.UIQueryView;
-import Views.UIView;
-import Views.UIMenuWithExtraView;
 
 import java.util.Scanner;
 
@@ -26,8 +27,8 @@ public class CartCheckoutView extends UIMenuWithExtraView {
 
     @Override
     public void show() {
-        System.out.println("Payment Methods... ");
-        super.show();
+        PaymentMethodDisplayAllView paymentMethodDisplayView = new PaymentMethodDisplayAllView();
+        paymentMethodDisplayView.showAndQuery();
     }
 
     // @Override
@@ -51,23 +52,42 @@ public class CartCheckoutView extends UIMenuWithExtraView {
 
     /* use backend class to dynamically list the payment options */
     @Override
+    public void query() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Pay By: ");
+        this.user_request = sc.nextInt();
+    }
+
+    @Override
     public ViewStatus showAndQuery() {
-
-        // Call class to generate list of payment options
-        PaymentDynamic PaymentMethods;
-        PaymentMethods = new PaymentDynamic();
-
-        if (true) {
-            this.myExtraViewOptions = PaymentMethods.getViewOptions();
-            this.myExtraSubViews = PaymentMethods.getSubViews();
+        if (SharedResources.getCurrentCustomerOrder().isEmpty()) {
+            System.out.println("Nothing to checkout");
+            return ViewStatus.FAIL_AND_GO_BACK;
         }
-
-        // ViewStatus viewStatus;
-
-        // Continue display
         return super.showAndQuery();
+    }
 
-        //return ViewStatus.SUCCESS_AND_GO_BACK;
+    @Override
+    public ViewStatus handleQuery() {
+//        pay
+        System.out.println("Success...");
+        String orderPrintable = SharedResources.getCurrentCustomerOrder().printReceipt();
+
+        SharedResources.getCurrentCustomerOrder().setOrderStatus(OrderStatus.IN_PROGRESS);
+        SharedResources.getCurrentCustomerOrder().setBranchId(
+                SharedResources.getCurrentCustBranchT().getBranchUUID()
+        );
+
+        SharedResources.getCurrentCustomerOrder().addMeToDB();
+        SharedResources.setCurrentCustomerOrder(new Order_T());
+
+        System.out.println(orderPrintable);
+
+        SharedResources.setJumpToView("Views.CustomerViews.CartViews.CartBaseView");
+
+//        todo save the order, purge from cache
+
+        return ViewStatus.JUMP_TO;
     }
 
 }

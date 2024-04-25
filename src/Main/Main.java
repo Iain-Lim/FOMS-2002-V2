@@ -61,20 +61,6 @@ public class Main {
     public static void debug_addStubData() {
         User_T user;
         String username;
-        for (int i = 0; i < 2; i++) {
-            username = "user" + i;
-            user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
-            user.setAge(20);
-            user.setGender(1);
-            user.addMeToDB();
-        }
-        for (int i = 2; i < 5; i++) {
-            username = "user" + i;
-            user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
-            user.setAge(35);
-            user.setGender(2);
-            user.addMeToDB();
-        }
 
         username = "admin";
         user = new User_T(username, "admin", true, StaffType.ADMIN);
@@ -121,6 +107,17 @@ public class Main {
 
         paymentMethod = new PaymentMethod_T("Paynow", PaymentType.QR);
         paymentMethodDBHelper.addToDatabase(paymentMethod);
+
+        for (int i = 0; i < 2; i++) {
+            username = "user" + i;
+            user = new User_T(username, "password", true, StaffType.NORMAL_STAFF);
+            user.addMeToDB();
+        }
+        for (int i = 2; i < 5; i++) {
+            username = "user" + i;
+            user = new User_T(username, "password", true, StaffType.BRANCH_MANAGER);
+            user.addMeToDB();
+        }
     }
 
     private static void open_databases() {

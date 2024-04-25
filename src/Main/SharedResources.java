@@ -4,6 +4,7 @@ import Backend.Branch;
 import Backend.Staff;
 import Database.*;
 import Database.DataStructs.Branch_T;
+import Database.DataStructs.Order_T;
 import Database.DataStructs.PaymentMethod_T;
 import Database.DataStructs.User_T;
 
@@ -16,8 +17,10 @@ public class SharedResources {
     private static PaymentMethod_T currentPaymentMethod;
     private static Staff currStaffB;
     private static User_T currentUserT;
-    private static Branch_T currentBranchT;
+    private static Branch_T currentCustBranchT;
+    private static Branch_T currentStaffBranchT;
     private static Branch currentBranchB;
+    private static Order_T currentCustomerOrder;
     private static String jumpToView = "";
     private static String errorMessage = "";
     public static PaymentMethod_T getCurrentPaymentMethod() {
@@ -83,12 +86,12 @@ public class SharedResources {
         SharedResources.currentUserT = currentUserT;
     }
 
-    public static Branch_T getCurrentBranchT() {
-        return currentBranchT;
+    public static Branch_T getCurrentCustBranchT() {
+        return currentCustBranchT;
     }
 
-    public static void setCurrentBranchT(Branch_T currentBranchT) {
-        SharedResources.currentBranchT = currentBranchT;
+    public static void setCurrentCustBranchT(Branch_T currentCustBranchT) {
+        SharedResources.currentCustBranchT = currentCustBranchT;
     }
 
     public static Branch getCurrentBranchB() {
@@ -113,5 +116,21 @@ public class SharedResources {
 
     public static void setErrorMessage(String errorMessage) {
         SharedResources.errorMessage = errorMessage;
+    }
+
+    public static Order_T getCurrentCustomerOrder() {
+        return currentCustomerOrder;
+    }
+
+    public static void setCurrentCustomerOrder(Order_T currentCustomerOrder) {
+        SharedResources.currentCustomerOrder = currentCustomerOrder;
+    }
+
+    public static Branch_T getCurrentStaffBranchT() {
+        return currentStaffBranchT;
+    }
+
+    public static void setCurrentStaffBranchT(Branch_T currentStaffBranchT) {
+        SharedResources.currentStaffBranchT = currentStaffBranchT;
     }
 }

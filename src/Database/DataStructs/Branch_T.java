@@ -8,7 +8,8 @@ import java.util.UUID;
 public class Branch_T implements IDatabaseItem_T {
     private UUID branchUUID;
     public ArrayList<MenuItem_T> menuItems;
-    public ArrayList<User_T> staffArr;
+    public ArrayList<User_T> normalStaffArr;
+    public ArrayList<User_T> branchManagerArr;
 
     private String branchName;
     public Branch_T() { }
@@ -16,8 +17,25 @@ public class Branch_T implements IDatabaseItem_T {
     public Branch_T(String branchName) {
         this.branchUUID = UUID.randomUUID();
         this.menuItems = new ArrayList<>();
-        this.staffArr = new ArrayList<>();
+        this.normalStaffArr = new ArrayList<>();
+        this.branchManagerArr = new ArrayList<>();
         this.branchName = branchName;
+    }
+
+    public ArrayList<User_T> getNormalStaffArr() {
+        return normalStaffArr;
+    }
+
+    public void setNormalStaffArr(ArrayList<User_T> normalStaffArr) {
+        this.normalStaffArr = normalStaffArr;
+    }
+
+    public ArrayList<User_T> getBranchManagerArr() {
+        return branchManagerArr;
+    }
+
+    public void setBranchManagerArr(ArrayList<User_T> branchManagerArr) {
+        this.branchManagerArr = branchManagerArr;
     }
 
     public UUID getBranchUUID() {
@@ -52,6 +70,57 @@ public class Branch_T implements IDatabaseItem_T {
             this.menuItems.add(copyMenuItemT);
             return true;
         }
+        return false;
+    }
+
+    public boolean addNormalStaff(User_T userObj) {
+        User_T tempUser;
+        for (int i = 0; i < this.normalStaffArr.size(); i++) {
+            tempUser = this.normalStaffArr.get(i);
+            if(tempUser.getUsername().equals(userObj.getUsername())) {
+                return false;
+            }
+        }
+
+        this.normalStaffArr.add(userObj);
+        return true;
+    }
+
+    public boolean removeNormalStaff(User_T userObj) {
+        User_T tempUser;
+        for (int i = 0; i < this.normalStaffArr.size(); i++) {
+            tempUser = this.normalStaffArr.get(i);
+            if(tempUser.getUsername().equals(userObj.getUsername())) {
+                this.normalStaffArr.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean addBranchManager(User_T userObj) {
+        User_T tempUser;
+        for (int i = 0; i < this.branchManagerArr.size(); i++) {
+            tempUser = this.branchManagerArr.get(i);
+            if(tempUser.getUsername().equals(userObj.getUsername())) {
+                return false;
+            }
+        }
+
+        this.branchManagerArr.add(userObj);
+        return true;
+    }
+
+    public boolean removeBranchManger(User_T userObj) {
+        User_T tempUser;
+        for (int i = 0; i < this.branchManagerArr.size(); i++) {
+            tempUser = this.branchManagerArr.get(i);
+            if(tempUser.getUsername().equals(userObj.getUsername())) {
+                this.branchManagerArr.remove(i);
+                return true;
+            }
+        }
+
         return false;
     }
 

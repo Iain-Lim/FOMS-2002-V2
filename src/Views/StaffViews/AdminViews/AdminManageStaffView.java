@@ -10,9 +10,8 @@ public class AdminManageStaffView extends UIMenuView {
         this.myViewName = this.getClass().getCanonicalName();
         this.myViewOptions = new String[] {
                 "Change Staff Type",
-                "Move Branch",
-                "Display All",
-                "Display All but filtered"
+                "Move Staff To Branch",
+                "See All",
         };
         this.subViews = new UIView[] {
                 new AdminChangeStaffTypeView(),
@@ -21,7 +20,4 @@ public class AdminManageStaffView extends UIMenuView {
                 new AccountDisplayFilteredView()
         };
     }
-
-//    todo list accounts and query
-
 }
