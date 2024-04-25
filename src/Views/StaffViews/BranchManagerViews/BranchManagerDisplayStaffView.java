@@ -1,6 +1,9 @@
 package Views.StaffViews.BranchManagerViews;
 
+import Database.DataStructs.*;
 import Views.UIView;
+import Main.SharedResources;
+import java.util.ArrayList;
 
 public class BranchManagerDisplayStaffView extends UIView {
     public BranchManagerDisplayStaffView() {
@@ -10,6 +13,32 @@ public class BranchManagerDisplayStaffView extends UIView {
     @Override
     public void show() {
         System.out.println("Display Staff in myBranch");
+
+
+        /* For each user in DB, check through filter, then print. */
+        User_T userTemp;
+        ArrayList<IDatabaseItem_T> databaseObject = SharedResources.getUserDatabaseHelper().getAllFromDatabase();
+        int displayIndex = 0;
+        for (int i = 0; i < databaseObject.size(); i++) {
+            userTemp = (User_T) databaseObject.get(i);
+            // Filter by branch
+            if(userTemp.getBranchT() == SharedResources.getCurrentStaffBranchT()){
+                displayUser_T(userTemp,displayIndex);
+                displayIndex++;
+                //System.out.println(userTemp.prettyPrint());
+            }
+        }
+    }
+
+    private void displayUser_T(User_T tmpUser,int displayIndex){
+        int i = displayIndex;
+
+        System.out.print( (i+1) + ": (" + tmpUser.getStaffType().toChar() + ") -> " + tmpUser.getUsername() + " -> branch: ");
+        if (tmpUser.getBranchT() != null) {
+            System.out.println(tmpUser.getBranchT().getBranchName());
+        } else {
+            System.out.println("null");
+        }
     }
 
     @Override
