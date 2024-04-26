@@ -6,6 +6,7 @@ import Database.DataStructs.User_T;
 import Main.SharedResources;
 import Views.AccountViews.AccountSettingsView;
 import Views.AccountViews.AccountLoginAsStaffView;
+import Views.IBackendView;
 import Views.UIMenuWithExtraView;
 import Views.UIQueryView;
 import Views.UIView;
@@ -53,11 +54,12 @@ public class StaffBaseView extends UIMenuWithExtraView {
             }
         }
 
-        this.staffObj = SharedResources.getCurrStaffB();
+        // IBackendView has functions for generating extra view options
+        IBackendView objWithExtraViews = SharedResources.getCurrStaffB();
 
-        if (this.staffObj != null) {
-            this.myExtraViewOptions = this.staffObj.getViewOptions();
-            this.myExtraSubViews = this.staffObj.getSubViews();
+        if (objWithExtraViews != null) {
+            this.myExtraViewOptions = objWithExtraViews.getViewOptions();
+            this.myExtraSubViews = objWithExtraViews.getSubViews();
         }
 
 //        continue as staff
