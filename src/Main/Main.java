@@ -27,8 +27,8 @@ public class Main {
 //            open and get from database
             open_databases();
 
-//            debug_addStubData();
-//            showAllDatabases();
+            debug_addStubData();
+            showAllDatabases();
 
 //            call main display function, do not modify
             mainView = new MainView();

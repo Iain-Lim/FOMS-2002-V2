@@ -32,13 +32,13 @@ public class AdminMoveStaffView extends UIQueryView {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("username: ");
+        System.out.print("> ");
         userIdx = sc.nextInt();
 
         UIView seeAllBranches = new BranchDisplayAllView();
         seeAllBranches.showAndQuery();
 
-        System.out.print("branch: ");
+        System.out.print("> ");
         branchIdx = sc.nextInt();
     }
 

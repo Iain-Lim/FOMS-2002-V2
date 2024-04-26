@@ -65,6 +65,7 @@ public class DatabaseHelper {
     }
 
     public IDatabaseItem_T getFromDatabase(int idx) {
+        if (idx == -1) return null;
         return this.databaseObject.get(idx);
     }
 

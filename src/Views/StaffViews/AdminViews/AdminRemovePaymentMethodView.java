@@ -30,7 +30,7 @@ public class AdminRemovePaymentMethodView extends UIQueryView {
     public void query() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Remove: ");
+        System.out.print("remove: ");
         paymentMethodName = sc.nextLine();
     }
 

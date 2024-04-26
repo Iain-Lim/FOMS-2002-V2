@@ -17,7 +17,7 @@ public class CartQueryTakeawayView extends UIQueryView {
     @Override
     public void query() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("[1] Takeaway?");
+        System.out.println("[1] Dine In?");
         System.out.print("> ");
         this.user_request = sc.nextInt();
     }

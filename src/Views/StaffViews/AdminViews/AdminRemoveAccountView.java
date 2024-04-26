@@ -26,7 +26,7 @@ public class AdminRemoveAccountView extends UIQueryView {
     public void query() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("remove: ");
+        System.out.print("username: ");
         username = sc.nextLine();
     }
 
